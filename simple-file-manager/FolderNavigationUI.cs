@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace simple_file_manager
 {
     public partial class FolderNavigationUI : Form
     {
+        OpenFolderUI openFolderUI;
+
         public FolderNavigationUI()
         {
             InitializeComponent();
@@ -24,17 +27,27 @@ namespace simple_file_manager
 
         private void mainFolderButton_Click(object sender, EventArgs e)
         {
-
+            // Get path for correct hard drive e.g. C
+            var rootDrive = Path.GetPathRoot(Environment.GetFolderPath(Environment.SpecialFolder.System));
+            
+            openFolderUI = new OpenFolderUI(rootDrive);
+            openFolderUI.Show();
         }
 
         private void desktopfolderButton_Click(object sender, EventArgs e)
         {
+            var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
+            openFolderUI = new OpenFolderUI(desktopPath);
+            openFolderUI.Show();
         }
 
         private void downloadsFolderButton_Click(object sender, EventArgs e)
         {
+            var downloadsPath = System.Environment.ExpandEnvironmentVariables("%userprofile%/downloads/");
 
+            openFolderUI = new OpenFolderUI(downloadsPath);
+            openFolderUI.Show();
         }
 
         private void AddNewFolder(string name)

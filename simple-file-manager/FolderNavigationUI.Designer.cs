@@ -48,6 +48,7 @@
             this.addFolderButton4 = new System.Windows.Forms.Button();
             this.addFolderButton5 = new System.Windows.Forms.Button();
             this.addFolderButton6 = new System.Windows.Forms.Button();
+            this.formLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainfolderLabel
@@ -278,12 +279,23 @@
             this.addFolderButton6.UseVisualStyleBackColor = false;
             this.addFolderButton6.Click += new System.EventHandler(this.addFolderButton6_Click);
             // 
+            // formLabel
+            // 
+            this.formLabel.AutoSize = true;
+            this.formLabel.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.formLabel.Location = new System.Drawing.Point(265, 17);
+            this.formLabel.Name = "formLabel";
+            this.formLabel.Size = new System.Drawing.Size(124, 24);
+            this.formLabel.TabIndex = 28;
+            this.formLabel.Text = "File Manager";
+            // 
             // FolderNavigationUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(637, 526);
+            this.Controls.Add(this.formLabel);
             this.Controls.Add(this.addFolderButton6);
             this.Controls.Add(this.addFolderButton5);
             this.Controls.Add(this.addFolderButton4);
@@ -331,6 +343,7 @@
         private System.Windows.Forms.Button addFolderButton4;
         private System.Windows.Forms.Button addFolderButton5;
         private System.Windows.Forms.Button addFolderButton6;
+        private System.Windows.Forms.Label formLabel;
     }
 }
 
