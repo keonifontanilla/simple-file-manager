@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace simple_file_manager
     {
         private string rootPath = "";
         private string path = "";
+        private bool isFile = false;
 
         public OpenFolderUI(string rootPath)
         {
@@ -27,7 +29,7 @@ namespace simple_file_manager
 
         private void LoadDirectoryAndFiles(string path)
         {
-            // Get directories and file but exluded hidden directories and files
+            // Get directories and file but exclude hidden directories and files
             var directories = new DirectoryInfo(path).GetDirectories().Where(x => (x.Attributes & FileAttributes.Hidden) == 0).ToArray();
             var files = new DirectoryInfo(path).GetFiles().Where(x => (x.Attributes & FileAttributes.Hidden) == 0).ToArray();
 
@@ -63,7 +65,20 @@ namespace simple_file_manager
         {
             if (folderListView.FocusedItem != null) this.path += "\\" + folderListView.FocusedItem.Text;
 
-            LoadDirectoryAndFiles(this.path);
+            // Check if focused item is a file or folder
+            var fileAttributes = File.GetAttributes(this.path);
+            isFile = ((fileAttributes & FileAttributes.Directory) == FileAttributes.Directory) ? false : true;
+
+            if (isFile)
+            {
+                Process.Start(this.path);
+                // Removes the file name at the end of the path
+                this.path = this.path.Substring(0, this.path.LastIndexOf("\\"));
+            }
+            else
+            {
+                LoadDirectoryAndFiles(this.path);
+            }
         }
 
         private void backButton_Click(object sender, EventArgs e)

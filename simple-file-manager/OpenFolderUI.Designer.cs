@@ -90,7 +90,7 @@
             // 
             this.SearchLabel.AutoSize = true;
             this.SearchLabel.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.SearchLabel.ForeColor = System.Drawing.Color.White;
             this.SearchLabel.Location = new System.Drawing.Point(138, 20);
             this.SearchLabel.Name = "SearchLabel";
             this.SearchLabel.Size = new System.Drawing.Size(57, 20);

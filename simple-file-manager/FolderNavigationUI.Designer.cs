@@ -56,7 +56,7 @@
             // mainfolderLabel
             // 
             this.mainfolderLabel.AutoSize = true;
-            this.mainfolderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.mainfolderLabel.ForeColor = System.Drawing.Color.White;
             this.mainfolderLabel.Location = new System.Drawing.Point(68, 162);
             this.mainfolderLabel.Name = "mainfolderLabel";
             this.mainfolderLabel.Size = new System.Drawing.Size(30, 13);
@@ -66,7 +66,7 @@
             // desktopFolderLabel
             // 
             this.desktopFolderLabel.AutoSize = true;
-            this.desktopFolderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.desktopFolderLabel.ForeColor = System.Drawing.Color.White;
             this.desktopFolderLabel.Location = new System.Drawing.Point(291, 162);
             this.desktopFolderLabel.Name = "desktopFolderLabel";
             this.desktopFolderLabel.Size = new System.Drawing.Size(47, 13);
@@ -76,7 +76,7 @@
             // downloadsfolderLabel
             // 
             this.downloadsfolderLabel.AutoSize = true;
-            this.downloadsfolderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.downloadsfolderLabel.ForeColor = System.Drawing.Color.White;
             this.downloadsfolderLabel.Location = new System.Drawing.Point(509, 162);
             this.downloadsfolderLabel.Name = "downloadsfolderLabel";
             this.downloadsfolderLabel.Size = new System.Drawing.Size(60, 13);
@@ -288,7 +288,7 @@
             // 
             this.formLabel.AutoSize = true;
             this.formLabel.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.formLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.formLabel.ForeColor = System.Drawing.Color.White;
             this.formLabel.Location = new System.Drawing.Point(256, 18);
             this.formLabel.Name = "formLabel";
             this.formLabel.Size = new System.Drawing.Size(124, 24);
