@@ -13,41 +13,71 @@ namespace simple_file_manager
 {
     public partial class OpenFolderUI : Form
     {
-        private string rootPath;
+        private string rootPath = "";
+        private string path = "";
 
         public OpenFolderUI(string rootPath)
         {
             this.rootPath = rootPath;
+            this.path = rootPath;
 
             InitializeComponent();
-            LoadDirectoryAndFiles();
+            LoadDirectoryAndFiles(rootPath);
         }
 
-        private void LoadDirectoryAndFiles()
+        private void LoadDirectoryAndFiles(string path)
         {
-            var directories = Directory.GetDirectories(rootPath);
-            var files = Directory.GetFiles(rootPath);
+            // Get directories and file but exluded hidden directories and files
+            var directories = new DirectoryInfo(path).GetDirectories().Where(x => (x.Attributes & FileAttributes.Hidden) == 0).ToArray();
+            var files = new DirectoryInfo(path).GetFiles().Where(x => (x.Attributes & FileAttributes.Hidden) == 0).ToArray();
+
+            folderListView.Items.Clear();
+
             LoadDirectory(directories);
             LoadFiles(files);
         }
 
-        private void LoadDirectory(string[] directories)
+        private void LoadDirectory(DirectoryInfo[] directories)
         {
             foreach (var directory in directories)
             {
-                var directoryName = Path.GetFileNameWithoutExtension(directory);
-                folderListView.Items.Add(directoryName);
+                folderListView.Items.Add(directory.Name);
             }
         }
 
-        private void LoadFiles(string[] files)
+        private void LoadFiles(FileInfo[] files)
         {
             foreach (var file in files)
             {
-                var fileName = Path.GetFileNameWithoutExtension(file);
-                folderListView.Items.Add(fileName);
+                iconsList.Images.Add(Icon.ExtractAssociatedIcon(file.FullName));
+                folderListView.Items.Add(file.Name, iconsList.Images.Count - 1);
             }
         }
 
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openButton_Click(object sender, EventArgs e)
+        {
+            if (folderListView.FocusedItem != null) this.path += "\\" + folderListView.FocusedItem.Text;
+
+            LoadDirectoryAndFiles(this.path);
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            var previousPath = this.path.Substring(0, this.path.LastIndexOf("\\"));
+            if (previousPath.Count() >= rootPath.Count()) this.path = previousPath;
+
+            LoadDirectoryAndFiles(this.path);
+        }
+
+        private void homeButton_Click(object sender, EventArgs e)
+        {
+            this.path = this.rootPath;
+            LoadDirectoryAndFiles(this.rootPath);
+        }
     }
 }

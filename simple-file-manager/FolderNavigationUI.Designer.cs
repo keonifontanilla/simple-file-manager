@@ -49,11 +49,14 @@
             this.addFolderButton5 = new System.Windows.Forms.Button();
             this.addFolderButton6 = new System.Windows.Forms.Button();
             this.formLabel = new System.Windows.Forms.Label();
+            this.topBarPanel = new System.Windows.Forms.Panel();
+            this.topBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainfolderLabel
             // 
             this.mainfolderLabel.AutoSize = true;
+            this.mainfolderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.mainfolderLabel.Location = new System.Drawing.Point(68, 162);
             this.mainfolderLabel.Name = "mainfolderLabel";
             this.mainfolderLabel.Size = new System.Drawing.Size(30, 13);
@@ -63,6 +66,7 @@
             // desktopFolderLabel
             // 
             this.desktopFolderLabel.AutoSize = true;
+            this.desktopFolderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.desktopFolderLabel.Location = new System.Drawing.Point(291, 162);
             this.desktopFolderLabel.Name = "desktopFolderLabel";
             this.desktopFolderLabel.Size = new System.Drawing.Size(47, 13);
@@ -72,6 +76,7 @@
             // downloadsfolderLabel
             // 
             this.downloadsfolderLabel.AutoSize = true;
+            this.downloadsfolderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.downloadsfolderLabel.Location = new System.Drawing.Point(509, 162);
             this.downloadsfolderLabel.Name = "downloadsfolderLabel";
             this.downloadsfolderLabel.Size = new System.Drawing.Size(60, 13);
@@ -137,7 +142,7 @@
             this.closeButton.BackColor = System.Drawing.Color.Transparent;
             this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
-            this.closeButton.Location = new System.Drawing.Point(588, 12);
+            this.closeButton.Location = new System.Drawing.Point(597, 3);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(37, 29);
             this.closeButton.TabIndex = 18;
@@ -283,11 +288,23 @@
             // 
             this.formLabel.AutoSize = true;
             this.formLabel.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.formLabel.Location = new System.Drawing.Point(265, 17);
+            this.formLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.formLabel.Location = new System.Drawing.Point(256, 18);
             this.formLabel.Name = "formLabel";
             this.formLabel.Size = new System.Drawing.Size(124, 24);
             this.formLabel.TabIndex = 28;
             this.formLabel.Text = "File Manager";
+            // 
+            // topBarPanel
+            // 
+            this.topBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.topBarPanel.Controls.Add(this.closeButton);
+            this.topBarPanel.Controls.Add(this.formLabel);
+            this.topBarPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topBarPanel.Location = new System.Drawing.Point(0, 0);
+            this.topBarPanel.Name = "topBarPanel";
+            this.topBarPanel.Size = new System.Drawing.Size(637, 65);
+            this.topBarPanel.TabIndex = 29;
             // 
             // FolderNavigationUI
             // 
@@ -295,7 +312,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(637, 526);
-            this.Controls.Add(this.formLabel);
+            this.Controls.Add(this.topBarPanel);
             this.Controls.Add(this.addFolderButton6);
             this.Controls.Add(this.addFolderButton5);
             this.Controls.Add(this.addFolderButton4);
@@ -305,7 +322,6 @@
             this.Controls.Add(this.desktopfolderButton);
             this.Controls.Add(this.mainFolderButton);
             this.Controls.Add(this.addFolderButton1);
-            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.folderLabel6);
             this.Controls.Add(this.folderLabel5);
             this.Controls.Add(this.folderLabel4);
@@ -318,6 +334,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FolderNavigationUI";
             this.Text = "Simple File Manager";
+            this.topBarPanel.ResumeLayout(false);
+            this.topBarPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,6 +362,7 @@
         private System.Windows.Forms.Button addFolderButton5;
         private System.Windows.Forms.Button addFolderButton6;
         private System.Windows.Forms.Label formLabel;
+        private System.Windows.Forms.Panel topBarPanel;
     }
 }
 
