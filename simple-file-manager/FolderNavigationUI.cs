@@ -5,15 +5,20 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace simple_file_manager
 {
     public partial class FolderNavigationUI : Form
     {
         OpenFolderUI openFolderUI;
+        private String[] paths = new String[6];
 
         public FolderNavigationUI()
         {
@@ -50,42 +55,91 @@ namespace simple_file_manager
             openFolderUI.Show();
         }
 
-        private void AddNewFolder(string name)
+        private void AddFolderIcon(Button folderButton, Button removeButton)
         {
-            foreach (var item in this.Controls.OfType<Button>().Where(x => x.Name == name))
+            var folderIcon = @".\Icons\folderIcon.png";
+            
+            folderButton.Image = Image.FromFile(folderIcon);
+            removeButton.Visible = true;
+
+            foreach (var button in this.Controls.OfType<Button>().Where(x => x.Name == removeButton.Name))
             {
-                item.Image = Image.FromFile(@".\Icons\folderIcon.png");
+                button.Click += new System.EventHandler(this.removeButton_Click);
+            }
+        }
+
+        private void AddNewFolder(Label lblName, Button folderButton, Button removeButton, int index)
+        {
+            using (var folderBrowserDialog = new FolderBrowserDialog())
+            {
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    paths[index] = folderBrowserDialog.SelectedPath;
+                    AddFolderIcon(folderButton, removeButton);
+                    lblName.Text = paths[index].Substring(paths[index].LastIndexOf("\\") + 1);
+
+                    // formating label location in the middle of folder icon
+                    lblName.Location = new Point(folderButton.Location.X + ((folderButton.Size.Width - lblName.Size.Width) / 2), folderButton.Bottom);
+                }
+            }
+        }
+
+        private void CreateUIFolder(Label lblName, Button folderButton, Button removeButton, int index)
+        {
+            if (paths[index] != null)
+            {
+                openFolderUI = new OpenFolderUI(paths[index]);
+                openFolderUI.Show();
+            }
+            else
+            {
+                AddNewFolder(lblName, folderButton, removeButton, index);
             }
         }
 
         private void addFolderButton1_Click(object sender, EventArgs e)
         {
-            AddNewFolder("addFolderButton1");
+            CreateUIFolder(folderLabel1, addFolderButton1, removeButton1, 0);
         }
 
         private void addFolderButton2_Click(object sender, EventArgs e)
         {
-            AddNewFolder("addFolderButton2");
+            CreateUIFolder(folderLabel2, addFolderButton2, removeButton2, 1);
         }
 
         private void addFolderButton3_Click(object sender, EventArgs e)
         {
-            AddNewFolder("addFolderButton3");
+            CreateUIFolder(folderLabel3, addFolderButton3, removeButton3, 2);
         }
 
         private void addFolderButton4_Click(object sender, EventArgs e)
         {
-            AddNewFolder("addFolderButton4");
+            CreateUIFolder(folderLabel4, addFolderButton4, removeButton4, 3);
         }
 
         private void addFolderButton5_Click(object sender, EventArgs e)
         {
-            AddNewFolder("addFolderButton5");
+            CreateUIFolder(folderLabel5, addFolderButton5, removeButton5, 4);
         }
 
         private void addFolderButton6_Click(object sender, EventArgs e)
         {
-            AddNewFolder("addFolderButton6");
+            CreateUIFolder(folderLabel6, addFolderButton6, removeButton6, 5);
+        }
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            // Get remove button number from name
+            var removeButton = (Button) sender;
+            var index = int.Parse(Regex.Match(removeButton.Name, @"\d+").ToString());
+
+            var addButton = (Button) this.Controls[$"addFolderButton{index}"];
+            var folderLabel = (Label) this.Controls[$"folderLabel{index}"];
+
+            addButton.Image = Image.FromFile(@".\Icons\addIcon.png");
+            folderLabel.Text = "";
+            removeButton.Visible = false;
+            paths[index - 1] = null;
         }
     }
 }

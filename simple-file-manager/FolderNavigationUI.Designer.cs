@@ -50,6 +50,12 @@
             this.addFolderButton6 = new System.Windows.Forms.Button();
             this.formLabel = new System.Windows.Forms.Label();
             this.topBarPanel = new System.Windows.Forms.Panel();
+            this.removeButton1 = new System.Windows.Forms.Button();
+            this.removeButton2 = new System.Windows.Forms.Button();
+            this.removeButton3 = new System.Windows.Forms.Button();
+            this.removeButton4 = new System.Windows.Forms.Button();
+            this.removeButton5 = new System.Windows.Forms.Button();
+            this.removeButton6 = new System.Windows.Forms.Button();
             this.topBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,56 +92,56 @@
             // folderLabel1
             // 
             this.folderLabel1.AutoSize = true;
+            this.folderLabel1.ForeColor = System.Drawing.Color.White;
             this.folderLabel1.Location = new System.Drawing.Point(68, 310);
             this.folderLabel1.Name = "folderLabel1";
-            this.folderLabel1.Size = new System.Drawing.Size(35, 13);
+            this.folderLabel1.Size = new System.Drawing.Size(0, 13);
             this.folderLabel1.TabIndex = 7;
-            this.folderLabel1.Text = "label1";
             // 
             // folderLabel2
             // 
             this.folderLabel2.AutoSize = true;
+            this.folderLabel2.ForeColor = System.Drawing.Color.White;
             this.folderLabel2.Location = new System.Drawing.Point(291, 310);
             this.folderLabel2.Name = "folderLabel2";
-            this.folderLabel2.Size = new System.Drawing.Size(35, 13);
+            this.folderLabel2.Size = new System.Drawing.Size(0, 13);
             this.folderLabel2.TabIndex = 9;
-            this.folderLabel2.Text = "label2";
             // 
             // folderLabel3
             // 
             this.folderLabel3.AutoSize = true;
+            this.folderLabel3.ForeColor = System.Drawing.Color.White;
             this.folderLabel3.Location = new System.Drawing.Point(509, 310);
             this.folderLabel3.Name = "folderLabel3";
-            this.folderLabel3.Size = new System.Drawing.Size(35, 13);
+            this.folderLabel3.Size = new System.Drawing.Size(0, 13);
             this.folderLabel3.TabIndex = 11;
-            this.folderLabel3.Text = "label3";
             // 
             // folderLabel4
             // 
             this.folderLabel4.AutoSize = true;
+            this.folderLabel4.ForeColor = System.Drawing.Color.White;
             this.folderLabel4.Location = new System.Drawing.Point(68, 461);
             this.folderLabel4.Name = "folderLabel4";
-            this.folderLabel4.Size = new System.Drawing.Size(35, 13);
+            this.folderLabel4.Size = new System.Drawing.Size(0, 13);
             this.folderLabel4.TabIndex = 13;
-            this.folderLabel4.Text = "label4";
             // 
             // folderLabel5
             // 
             this.folderLabel5.AutoSize = true;
+            this.folderLabel5.ForeColor = System.Drawing.Color.White;
             this.folderLabel5.Location = new System.Drawing.Point(291, 461);
             this.folderLabel5.Name = "folderLabel5";
-            this.folderLabel5.Size = new System.Drawing.Size(35, 13);
+            this.folderLabel5.Size = new System.Drawing.Size(0, 13);
             this.folderLabel5.TabIndex = 15;
-            this.folderLabel5.Text = "label5";
             // 
             // folderLabel6
             // 
             this.folderLabel6.AutoSize = true;
+            this.folderLabel6.ForeColor = System.Drawing.Color.White;
             this.folderLabel6.Location = new System.Drawing.Point(509, 461);
             this.folderLabel6.Name = "folderLabel6";
-            this.folderLabel6.Size = new System.Drawing.Size(35, 13);
+            this.folderLabel6.Size = new System.Drawing.Size(0, 13);
             this.folderLabel6.TabIndex = 17;
-            this.folderLabel6.Text = "label6";
             // 
             // closeButton
             // 
@@ -306,12 +312,72 @@
             this.topBarPanel.Size = new System.Drawing.Size(637, 65);
             this.topBarPanel.TabIndex = 29;
             // 
+            // removeButton1
+            // 
+            this.removeButton1.Location = new System.Drawing.Point(144, 228);
+            this.removeButton1.Name = "removeButton1";
+            this.removeButton1.Size = new System.Drawing.Size(19, 15);
+            this.removeButton1.TabIndex = 30;
+            this.removeButton1.UseVisualStyleBackColor = true;
+            this.removeButton1.Visible = false;
+            // 
+            // removeButton2
+            // 
+            this.removeButton2.Location = new System.Drawing.Point(374, 224);
+            this.removeButton2.Name = "removeButton2";
+            this.removeButton2.Size = new System.Drawing.Size(19, 15);
+            this.removeButton2.TabIndex = 31;
+            this.removeButton2.UseVisualStyleBackColor = true;
+            this.removeButton2.Visible = false;
+            // 
+            // removeButton3
+            // 
+            this.removeButton3.Location = new System.Drawing.Point(594, 224);
+            this.removeButton3.Name = "removeButton3";
+            this.removeButton3.Size = new System.Drawing.Size(19, 15);
+            this.removeButton3.TabIndex = 32;
+            this.removeButton3.UseVisualStyleBackColor = true;
+            this.removeButton3.Visible = false;
+            // 
+            // removeButton4
+            // 
+            this.removeButton4.Location = new System.Drawing.Point(144, 379);
+            this.removeButton4.Name = "removeButton4";
+            this.removeButton4.Size = new System.Drawing.Size(19, 15);
+            this.removeButton4.TabIndex = 33;
+            this.removeButton4.UseVisualStyleBackColor = true;
+            this.removeButton4.Visible = false;
+            // 
+            // removeButton5
+            // 
+            this.removeButton5.Location = new System.Drawing.Point(374, 379);
+            this.removeButton5.Name = "removeButton5";
+            this.removeButton5.Size = new System.Drawing.Size(19, 15);
+            this.removeButton5.TabIndex = 34;
+            this.removeButton5.UseVisualStyleBackColor = true;
+            this.removeButton5.Visible = false;
+            // 
+            // removeButton6
+            // 
+            this.removeButton6.Location = new System.Drawing.Point(594, 379);
+            this.removeButton6.Name = "removeButton6";
+            this.removeButton6.Size = new System.Drawing.Size(19, 15);
+            this.removeButton6.TabIndex = 35;
+            this.removeButton6.UseVisualStyleBackColor = true;
+            this.removeButton6.Visible = false;
+            // 
             // FolderNavigationUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(637, 526);
+            this.Controls.Add(this.removeButton6);
+            this.Controls.Add(this.removeButton5);
+            this.Controls.Add(this.removeButton4);
+            this.Controls.Add(this.removeButton3);
+            this.Controls.Add(this.removeButton2);
+            this.Controls.Add(this.removeButton1);
             this.Controls.Add(this.topBarPanel);
             this.Controls.Add(this.addFolderButton6);
             this.Controls.Add(this.addFolderButton5);
@@ -363,6 +429,12 @@
         private System.Windows.Forms.Button addFolderButton6;
         private System.Windows.Forms.Label formLabel;
         private System.Windows.Forms.Panel topBarPanel;
+        private System.Windows.Forms.Button removeButton1;
+        private System.Windows.Forms.Button removeButton2;
+        private System.Windows.Forms.Button removeButton3;
+        private System.Windows.Forms.Button removeButton4;
+        private System.Windows.Forms.Button removeButton5;
+        private System.Windows.Forms.Button removeButton6;
     }
 }
 
