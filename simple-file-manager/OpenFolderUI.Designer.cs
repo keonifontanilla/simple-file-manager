@@ -37,7 +37,7 @@
             this.SearchLabel = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
             this.openButton = new System.Windows.Forms.Button();
-            this.moveButton = new System.Windows.Forms.Button();
+            this.newFolderButton = new System.Windows.Forms.Button();
             this.sideBarPanel = new System.Windows.Forms.Panel();
             this.sideBarPanel.SuspendLayout();
             this.SuspendLayout();
@@ -117,20 +117,21 @@
             this.openButton.UseVisualStyleBackColor = true;
             this.openButton.Click += new System.EventHandler(this.openButton_Click);
             // 
-            // moveButton
+            // newFolderButton
             // 
-            this.moveButton.Location = new System.Drawing.Point(32, 191);
-            this.moveButton.Name = "moveButton";
-            this.moveButton.Size = new System.Drawing.Size(75, 23);
-            this.moveButton.TabIndex = 7;
-            this.moveButton.Text = "Move";
-            this.moveButton.UseVisualStyleBackColor = true;
+            this.newFolderButton.Location = new System.Drawing.Point(32, 191);
+            this.newFolderButton.Name = "newFolderButton";
+            this.newFolderButton.Size = new System.Drawing.Size(75, 23);
+            this.newFolderButton.TabIndex = 7;
+            this.newFolderButton.Text = "New Folder";
+            this.newFolderButton.UseVisualStyleBackColor = true;
+            this.newFolderButton.Click += new System.EventHandler(this.newFolderButton_Click);
             // 
             // sideBarPanel
             // 
             this.sideBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.sideBarPanel.Controls.Add(this.homeButton);
-            this.sideBarPanel.Controls.Add(this.moveButton);
+            this.sideBarPanel.Controls.Add(this.newFolderButton);
             this.sideBarPanel.Controls.Add(this.backButton);
             this.sideBarPanel.Controls.Add(this.openButton);
             this.sideBarPanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -168,7 +169,7 @@
         private System.Windows.Forms.Label SearchLabel;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Button openButton;
-        private System.Windows.Forms.Button moveButton;
+        private System.Windows.Forms.Button newFolderButton;
         private System.Windows.Forms.Panel sideBarPanel;
     }
 }

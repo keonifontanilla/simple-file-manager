@@ -94,5 +94,29 @@ namespace simple_file_manager
             this.path = this.rootPath;
             LoadDirectoryAndFiles(this.rootPath);
         }
+
+        private void newFolderButton_Click(object sender, EventArgs e)
+        {
+            var folderName = Microsoft.VisualBasic.Interaction.InputBox("Prompt", "Create New Folder", "New folder", newFolderButton.Right, newFolderButton.Location.Y);
+            var path = this.path;
+            path += "\\" + folderName;
+
+            try
+            {
+                if (Directory.Exists(path))
+                {
+                    MessageBox.Show("Folder exists.");
+                    return;
+                }
+
+                var directoryInfo = Directory.CreateDirectory(path);
+                MessageBox.Show("Folder created.");
+                LoadDirectoryAndFiles(this.path);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to create folder." + "" + ex.ToString());
+            }
+        }
     }
 }
