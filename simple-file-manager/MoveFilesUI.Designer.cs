@@ -34,29 +34,31 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.sourceLabel = new System.Windows.Forms.Label();
             this.destLabel = new System.Windows.Forms.Label();
+            this.setButton1 = new System.Windows.Forms.Button();
+            this.setButton2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sourcePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // sourcePictureBox
             // 
-            this.sourcePictureBox.Location = new System.Drawing.Point(91, 32);
+            this.sourcePictureBox.Location = new System.Drawing.Point(108, 39);
             this.sourcePictureBox.Name = "sourcePictureBox";
-            this.sourcePictureBox.Size = new System.Drawing.Size(122, 112);
+            this.sourcePictureBox.Size = new System.Drawing.Size(97, 91);
             this.sourcePictureBox.TabIndex = 0;
             this.sourcePictureBox.TabStop = false;
             // 
             // destPictureBox
             // 
-            this.destPictureBox.Location = new System.Drawing.Point(354, 32);
+            this.destPictureBox.Location = new System.Drawing.Point(362, 39);
             this.destPictureBox.Name = "destPictureBox";
-            this.destPictureBox.Size = new System.Drawing.Size(122, 112);
+            this.destPictureBox.Size = new System.Drawing.Size(97, 89);
             this.destPictureBox.TabIndex = 1;
             this.destPictureBox.TabStop = false;
             // 
             // confrimButton
             // 
-            this.confrimButton.Location = new System.Drawing.Point(177, 188);
+            this.confrimButton.Location = new System.Drawing.Point(182, 212);
             this.confrimButton.Name = "confrimButton";
             this.confrimButton.Size = new System.Drawing.Size(75, 23);
             this.confrimButton.TabIndex = 2;
@@ -66,7 +68,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(308, 188);
+            this.cancelButton.Location = new System.Drawing.Point(313, 212);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 3;
@@ -77,27 +79,49 @@
             // sourceLabel
             // 
             this.sourceLabel.AutoSize = true;
-            this.sourceLabel.Location = new System.Drawing.Point(133, 147);
+            this.sourceLabel.ForeColor = System.Drawing.Color.White;
+            this.sourceLabel.Location = new System.Drawing.Point(156, 133);
             this.sourceLabel.Name = "sourceLabel";
-            this.sourceLabel.Size = new System.Drawing.Size(35, 13);
+            this.sourceLabel.Size = new System.Drawing.Size(0, 13);
             this.sourceLabel.TabIndex = 4;
-            this.sourceLabel.Text = "label1";
             // 
             // destLabel
             // 
             this.destLabel.AutoSize = true;
-            this.destLabel.Location = new System.Drawing.Point(397, 147);
+            this.destLabel.ForeColor = System.Drawing.Color.White;
+            this.destLabel.Location = new System.Drawing.Point(410, 133);
             this.destLabel.Name = "destLabel";
-            this.destLabel.Size = new System.Drawing.Size(35, 13);
+            this.destLabel.Size = new System.Drawing.Size(0, 13);
             this.destLabel.TabIndex = 5;
-            this.destLabel.Text = "label2";
+            // 
+            // setButton1
+            // 
+            this.setButton1.Location = new System.Drawing.Point(134, 149);
+            this.setButton1.Name = "setButton1";
+            this.setButton1.Size = new System.Drawing.Size(44, 21);
+            this.setButton1.TabIndex = 6;
+            this.setButton1.Text = "Set";
+            this.setButton1.UseVisualStyleBackColor = true;
+            this.setButton1.Click += new System.EventHandler(this.setButton1_Click);
+            // 
+            // setButton2
+            // 
+            this.setButton2.Location = new System.Drawing.Point(389, 149);
+            this.setButton2.Name = "setButton2";
+            this.setButton2.Size = new System.Drawing.Size(43, 21);
+            this.setButton2.TabIndex = 7;
+            this.setButton2.Text = "Set";
+            this.setButton2.UseVisualStyleBackColor = true;
+            this.setButton2.Click += new System.EventHandler(this.setButton2_Click);
             // 
             // MoveFilesUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(570, 229);
+            this.ClientSize = new System.Drawing.Size(587, 247);
+            this.Controls.Add(this.setButton2);
+            this.Controls.Add(this.setButton1);
             this.Controls.Add(this.destLabel);
             this.Controls.Add(this.sourceLabel);
             this.Controls.Add(this.cancelButton);
@@ -121,5 +145,7 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label sourceLabel;
         private System.Windows.Forms.Label destLabel;
+        private System.Windows.Forms.Button setButton1;
+        private System.Windows.Forms.Button setButton2;
     }
 }

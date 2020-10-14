@@ -52,7 +52,7 @@ namespace simple_file_manager
 
         private void downloadsFolderButton_Click(object sender, EventArgs e)
         {
-            var downloadsPath = System.Environment.ExpandEnvironmentVariables("%userprofile%/downloads/");
+            var downloadsPath = Environment.ExpandEnvironmentVariables(@"%userprofile%\downloads");
 
             openFolderUI = new OpenFolderUI(moveFilesUI, downloadsPath);
             openFolderUI.Show();
@@ -67,7 +67,7 @@ namespace simple_file_manager
 
             foreach (var button in this.Controls.OfType<Button>().Where(x => x.Name == removeButton.Name))
             {
-                button.Click += new System.EventHandler(this.removeButton_Click);
+                button.Click += new EventHandler(this.removeButton_Click);
             }
         }
 

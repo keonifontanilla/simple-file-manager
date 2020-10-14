@@ -19,6 +19,7 @@ namespace simple_file_manager
         private string rootPath = "";
         private string path = "";
         private bool isFile = false;
+        private bool moveButtonClicked = false;
 
         public OpenFolderUI(MoveFilesUI moveFilesUI, string rootPath)
         {
@@ -125,20 +126,36 @@ namespace simple_file_manager
 
         private void moveButton_Click(object sender, EventArgs e)
         {
+            //if (!moveButtonClicked)
+            //{
+            //    moveFilesUI.Show();
+            //    moveButton.Text = "Cancel move.";
+            //    moveButtonClicked = true;
+            //}
+            //else
+            //{
+            //    moveFilesUI.Hide();
+            //    moveButton.Text = "Move";
+            //    moveButtonClicked = false;
+            //}
+            moveFilesUI.Show();
+            
+        }
+
+        private void folderListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var path = this.path;
+
             if (MoveFiles.IsSource)
             {
-                MoveFiles.SourcePath = this.path += "\\" + folderListView.FocusedItem.Text;
-                moveFilesUI.SetPictureBox(@".\Icons\folderIcon.png");
-                MoveFiles.IsSource = false;
-                moveFilesUI.Show();
+                MoveFiles.SourcePath = path += "\\" + folderListView.FocusedItem.Text;
+                MoveFiles.Name = folderListView.FocusedItem.Text;
             }
             else
             {
-                MoveFiles.DestinationPath = this.path += "\\" + folderListView.FocusedItem.Text;
-                moveFilesUI.SetPictureBox(@".\Icons\folderIcon.png");
-                MoveFiles.IsSource = true;
+                MoveFiles.DestinationPath = path += "\\" + folderListView.FocusedItem.Text;
+                MoveFiles.Name = folderListView.FocusedItem.Text;
             }
-            moveFilesUI.Refresh();
         }
     }
 }

@@ -53,6 +53,7 @@
             this.folderListView.SmallImageList = this.iconsList;
             this.folderListView.TabIndex = 0;
             this.folderListView.UseCompatibleStateImageBehavior = false;
+            this.folderListView.SelectedIndexChanged += new System.EventHandler(this.folderListView_SelectedIndexChanged);
             // 
             // iconsList
             // 
