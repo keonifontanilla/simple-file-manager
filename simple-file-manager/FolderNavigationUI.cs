@@ -18,10 +18,13 @@ namespace simple_file_manager
     public partial class FolderNavigationUI : Form
     {
         OpenFolderUI openFolderUI;
+        MoveFilesUI moveFilesUI;
         private String[] paths = new String[6];
 
         public FolderNavigationUI()
         {
+            moveFilesUI = new MoveFilesUI();
+
             InitializeComponent();
         }
 
@@ -35,7 +38,7 @@ namespace simple_file_manager
             // Get path for correct hard drive e.g. C
             var rootDrive = Path.GetPathRoot(Environment.GetFolderPath(Environment.SpecialFolder.System));
             
-            openFolderUI = new OpenFolderUI(rootDrive);
+            openFolderUI = new OpenFolderUI(moveFilesUI, rootDrive);
             openFolderUI.Show();
         }
 
@@ -43,7 +46,7 @@ namespace simple_file_manager
         {
             var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            openFolderUI = new OpenFolderUI(desktopPath);
+            openFolderUI = new OpenFolderUI(moveFilesUI, desktopPath);
             openFolderUI.Show();
         }
 
@@ -51,7 +54,7 @@ namespace simple_file_manager
         {
             var downloadsPath = System.Environment.ExpandEnvironmentVariables("%userprofile%/downloads/");
 
-            openFolderUI = new OpenFolderUI(downloadsPath);
+            openFolderUI = new OpenFolderUI(moveFilesUI, downloadsPath);
             openFolderUI.Show();
         }
 
@@ -88,7 +91,7 @@ namespace simple_file_manager
         {
             if (paths[index] != null)
             {
-                openFolderUI = new OpenFolderUI(paths[index]);
+                openFolderUI = new OpenFolderUI(moveFilesUI, paths[index]);
                 openFolderUI.Show();
             }
             else

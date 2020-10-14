@@ -39,6 +39,7 @@
             this.openButton = new System.Windows.Forms.Button();
             this.newFolderButton = new System.Windows.Forms.Button();
             this.sideBarPanel = new System.Windows.Forms.Panel();
+            this.moveButton = new System.Windows.Forms.Button();
             this.sideBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,6 +131,7 @@
             // sideBarPanel
             // 
             this.sideBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.sideBarPanel.Controls.Add(this.moveButton);
             this.sideBarPanel.Controls.Add(this.homeButton);
             this.sideBarPanel.Controls.Add(this.newFolderButton);
             this.sideBarPanel.Controls.Add(this.backButton);
@@ -139,6 +141,16 @@
             this.sideBarPanel.Name = "sideBarPanel";
             this.sideBarPanel.Size = new System.Drawing.Size(136, 532);
             this.sideBarPanel.TabIndex = 8;
+            // 
+            // moveButton
+            // 
+            this.moveButton.Location = new System.Drawing.Point(32, 234);
+            this.moveButton.Name = "moveButton";
+            this.moveButton.Size = new System.Drawing.Size(75, 23);
+            this.moveButton.TabIndex = 8;
+            this.moveButton.Text = "Move";
+            this.moveButton.UseVisualStyleBackColor = true;
+            this.moveButton.Click += new System.EventHandler(this.moveButton_Click);
             // 
             // OpenFolderUI
             // 
@@ -171,5 +183,6 @@
         private System.Windows.Forms.Button openButton;
         private System.Windows.Forms.Button newFolderButton;
         private System.Windows.Forms.Panel sideBarPanel;
+        private System.Windows.Forms.Button moveButton;
     }
 }

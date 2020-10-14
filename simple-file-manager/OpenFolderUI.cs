@@ -14,12 +14,15 @@ namespace simple_file_manager
 {
     public partial class OpenFolderUI : Form
     {
+        MoveFilesUI moveFilesUI;
+
         private string rootPath = "";
         private string path = "";
         private bool isFile = false;
 
-        public OpenFolderUI(string rootPath)
+        public OpenFolderUI(MoveFilesUI moveFilesUI, string rootPath)
         {
+            this.moveFilesUI = moveFilesUI;
             this.rootPath = rootPath;
             this.path = rootPath;
 
@@ -97,9 +100,10 @@ namespace simple_file_manager
 
         private void newFolderButton_Click(object sender, EventArgs e)
         {
-            var folderName = Microsoft.VisualBasic.Interaction.InputBox("Prompt", "Create New Folder", "New folder", newFolderButton.Right, newFolderButton.Location.Y);
-            var path = this.path;
-            path += "\\" + folderName;
+            var path = ""; 
+            var folderName = Microsoft.VisualBasic.Interaction.InputBox("Input folder name.", "Create New Folder", "New folder", newFolderButton.Right, newFolderButton.Location.Y);
+
+            if (folderName != "") path += this.path + "\\" + folderName;
 
             try
             {
@@ -113,10 +117,28 @@ namespace simple_file_manager
                 MessageBox.Show("Folder created.");
                 LoadDirectoryAndFiles(this.path);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Failed to create folder." + "" + ex.ToString());
+                MessageBox.Show("Canceled.");
             }
+        }
+
+        private void moveButton_Click(object sender, EventArgs e)
+        {
+            if (MoveFiles.IsSource)
+            {
+                MoveFiles.SourcePath = this.path += "\\" + folderListView.FocusedItem.Text;
+                moveFilesUI.SetPictureBox(@".\Icons\folderIcon.png");
+                MoveFiles.IsSource = false;
+                moveFilesUI.Show();
+            }
+            else
+            {
+                MoveFiles.DestinationPath = this.path += "\\" + folderListView.FocusedItem.Text;
+                moveFilesUI.SetPictureBox(@".\Icons\folderIcon.png");
+                MoveFiles.IsSource = true;
+            }
+            moveFilesUI.Refresh();
         }
     }
 }

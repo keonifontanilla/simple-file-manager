@@ -53,6 +53,13 @@
     <Compile Include="FolderNavigationUI.Designer.cs">
       <DependentUpon>FolderNavigationUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoveFiles.cs" />
+    <Compile Include="MoveFilesUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoveFilesUI.Designer.cs">
+      <DependentUpon>MoveFilesUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpenFolderUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FolderNavigationUI.resx">
       <DependentUpon>FolderNavigationUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MoveFilesUI.resx">
+      <DependentUpon>MoveFilesUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OpenFolderUI.resx">
       <DependentUpon>OpenFolderUI.cs</DependentUpon>
