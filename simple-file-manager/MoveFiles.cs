@@ -13,6 +13,7 @@ namespace simple_file_manager
         public static string DestinationPath { get; set; }
         public static bool IsSource { get; set; } = true;
         public static string  Name { get; set; }
+        public static List<OpenFolderUI> openFolderUIRefs { get; set; } = new List<OpenFolderUI>();
 
         public static void Reset()
         {
@@ -20,6 +21,7 @@ namespace simple_file_manager
             DestinationPath = "";
             IsSource = true;
             Name = "";
+            openFolderUIRefs = new List<OpenFolderUI>();
         }
     }
 }

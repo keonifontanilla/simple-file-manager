@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MoveFilesUI));
             this.sourcePictureBox = new System.Windows.Forms.PictureBox();
             this.destPictureBox = new System.Windows.Forms.PictureBox();
-            this.confrimButton = new System.Windows.Forms.Button();
+            this.confirmButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.sourceLabel = new System.Windows.Forms.Label();
             this.destLabel = new System.Windows.Forms.Label();
             this.setButton1 = new System.Windows.Forms.Button();
             this.setButton2 = new System.Windows.Forms.Button();
+            this.rightArrowPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.sourcePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rightArrowPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // sourcePictureBox
@@ -56,15 +59,15 @@
             this.destPictureBox.TabIndex = 1;
             this.destPictureBox.TabStop = false;
             // 
-            // confrimButton
+            // confirmButton
             // 
-            this.confrimButton.Location = new System.Drawing.Point(182, 212);
-            this.confrimButton.Name = "confrimButton";
-            this.confrimButton.Size = new System.Drawing.Size(75, 23);
-            this.confrimButton.TabIndex = 2;
-            this.confrimButton.Text = "OK";
-            this.confrimButton.UseVisualStyleBackColor = true;
-            this.confrimButton.Click += new System.EventHandler(this.confrimButton_Click);
+            this.confirmButton.Location = new System.Drawing.Point(182, 212);
+            this.confirmButton.Name = "confirmButton";
+            this.confirmButton.Size = new System.Drawing.Size(75, 23);
+            this.confirmButton.TabIndex = 2;
+            this.confirmButton.Text = "OK";
+            this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
             // cancelButton
             // 
@@ -114,24 +117,36 @@
             this.setButton2.UseVisualStyleBackColor = true;
             this.setButton2.Click += new System.EventHandler(this.setButton2_Click);
             // 
+            // rightArrowPictureBox
+            // 
+            this.rightArrowPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("rightArrowPictureBox.Image")));
+            this.rightArrowPictureBox.Location = new System.Drawing.Point(233, 59);
+            this.rightArrowPictureBox.Name = "rightArrowPictureBox";
+            this.rightArrowPictureBox.Size = new System.Drawing.Size(100, 50);
+            this.rightArrowPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.rightArrowPictureBox.TabIndex = 8;
+            this.rightArrowPictureBox.TabStop = false;
+            // 
             // MoveFilesUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(587, 247);
+            this.Controls.Add(this.rightArrowPictureBox);
             this.Controls.Add(this.setButton2);
             this.Controls.Add(this.setButton1);
             this.Controls.Add(this.destLabel);
             this.Controls.Add(this.sourceLabel);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.confrimButton);
+            this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.destPictureBox);
             this.Controls.Add(this.sourcePictureBox);
             this.Name = "MoveFilesUI";
             this.Text = "MoveFilesUI";
             ((System.ComponentModel.ISupportInitialize)(this.sourcePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.destPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rightArrowPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,11 +156,12 @@
 
         private System.Windows.Forms.PictureBox sourcePictureBox;
         private System.Windows.Forms.PictureBox destPictureBox;
-        private System.Windows.Forms.Button confrimButton;
+        private System.Windows.Forms.Button confirmButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label sourceLabel;
         private System.Windows.Forms.Label destLabel;
         private System.Windows.Forms.Button setButton1;
         private System.Windows.Forms.Button setButton2;
+        private System.Windows.Forms.PictureBox rightArrowPictureBox;
     }
 }

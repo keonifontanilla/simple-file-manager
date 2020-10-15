@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
@@ -18,12 +19,38 @@ namespace simple_file_manager
             InitializeComponent();
         }
 
-        private void confrimButton_Click(object sender, EventArgs e)
+        private void confirmButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(MoveFiles.SourcePath);
+            try
+            {
+                if (Directory.Exists(MoveFiles.SourcePath))
+                { 
+                    if (!Directory.Exists(MoveFiles.DestinationPath + "\\" + sourceLabel.Text))
+                    {
+                        Directory.Move(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
+
+                        foreach (var refs in MoveFiles.openFolderUIRefs)
+                        {
+                            // refs.LoadDirectoryAndFiles(MoveFiles.SourcePath.Substring(0, MoveFiles.DestinationPath.LastIndexOf("\\")));
+                            refs.LoadDirectoryAndFiles(MoveFiles.DestinationPath);
+                        }
+
+                        Reset();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Move failed.");
+            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        private void Reset()
         {
             MoveFiles.Reset();
             sourcePictureBox.Image = null;

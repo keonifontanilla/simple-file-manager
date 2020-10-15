@@ -103,6 +103,7 @@
     <Content Include="Icons\addIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Icons\arrowRight.png" />
     <Content Include="Icons\closeButtonIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

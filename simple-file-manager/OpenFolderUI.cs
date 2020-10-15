@@ -31,7 +31,7 @@ namespace simple_file_manager
             LoadDirectoryAndFiles(rootPath);
         }
 
-        private void LoadDirectoryAndFiles(string path)
+        public void LoadDirectoryAndFiles(string path)
         {
             // Get directories and file but exclude hidden directories and files
             var directories = new DirectoryInfo(path).GetDirectories().Where(x => (x.Attributes & FileAttributes.Hidden) == 0).ToArray();
@@ -67,7 +67,7 @@ namespace simple_file_manager
 
         private void openButton_Click(object sender, EventArgs e)
         {
-            if (folderListView.FocusedItem != null) this.path += "\\" + folderListView.FocusedItem.Text;
+            if (folderListView.FocusedItem != null && folderListView.SelectedItems.Count != 0) this.path += "\\" + folderListView.FocusedItem.Text;
 
             // Check if focused item is a file or folder
             var fileAttributes = File.GetAttributes(this.path);
@@ -138,8 +138,8 @@ namespace simple_file_manager
             //    moveButton.Text = "Move";
             //    moveButtonClicked = false;
             //}
+            MoveFiles.openFolderUIRefs.Add(this);
             moveFilesUI.Show();
-            
         }
 
         private void folderListView_SelectedIndexChanged(object sender, EventArgs e)
