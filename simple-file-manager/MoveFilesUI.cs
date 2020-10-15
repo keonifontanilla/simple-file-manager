@@ -21,22 +21,42 @@ namespace simple_file_manager
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
+            MoveFolders(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
+        }
+
+        private void MoveFolders(string sourcePath, string destinationPath)
+        {
             try
             {
-                if (Directory.Exists(MoveFiles.SourcePath))
-                { 
-                    if (!Directory.Exists(MoveFiles.DestinationPath + "\\" + sourceLabel.Text))
+                if (Directory.Exists(sourcePath))
+                {
+                    if (!Directory.Exists(destinationPath))
                     {
-                        Directory.Move(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
+                        Directory.Move(sourcePath, destinationPath);
 
+                        // Fix this
                         foreach (var refs in MoveFiles.openFolderUIRefs)
                         {
                             // refs.LoadDirectoryAndFiles(MoveFiles.SourcePath.Substring(0, MoveFiles.DestinationPath.LastIndexOf("\\")));
-                            refs.LoadDirectoryAndFiles(MoveFiles.DestinationPath);
+                            refs.LoadDirectoryAndFiles(destinationPath);
+                        }
+                    }
+                    else
+                    {
+                        // Move files from a folder into an existing folder
+                        foreach (var file in new DirectoryInfo(sourcePath).GetFiles())
+                        {
+                            file.CopyTo($@"{destinationPath}\{file.Name}", true);
                         }
 
-                        Reset();
+                        // Recursively traverse subdirectories
+                        foreach (var subDirectory in new DirectoryInfo(sourcePath).GetDirectories())
+                        {
+                            MoveFolders(subDirectory.FullName, $@"{destinationPath}\{subDirectory.Name}");
+                        }
                     }
+
+                    Reset();
                 }
             }
             catch (Exception)
