@@ -147,7 +147,7 @@ namespace simple_file_manager
         {
             var path = this.path;
 
-            if (MoveFiles.IsSource && MoveFiles.MoveClicked)
+            if (MoveFiles.IsSource)
             {
                 MoveFiles.SourcePath = path += "\\" + folderListView.FocusedItem.Text;
                 MoveFiles.Name = folderListView.FocusedItem.Text;

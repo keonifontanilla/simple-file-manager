@@ -19,17 +19,21 @@ namespace simple_file_manager
             InitializeComponent();
         }
 
+        // Fix when hitting ok but did not set destination path in UI
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            var fileAttributes = File.GetAttributes(MoveFiles.SourcePath);
+            if (MoveFiles.SourcePath != null && MoveFiles.SourcePath != "")
+            {
+                var fileAttributes = File.GetAttributes(MoveFiles.SourcePath);
 
-            if ((fileAttributes & FileAttributes.Directory) == FileAttributes.Directory)
-            {
-                MoveFolders(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
-            }
-            else
-            {
-                MoveFile();
+                if ((fileAttributes & FileAttributes.Directory) == FileAttributes.Directory)
+                {
+                    MoveFolders(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
+                }
+                else
+                {
+                    MoveFile();
+                }
             }
         }
 
@@ -121,8 +125,11 @@ namespace simple_file_manager
 
         private void setButton2_Click(object sender, EventArgs e)
         {
-            SetButtonUI(MoveFiles.DestinationPath, destPictureBox, destLabel, false);
-            MoveFiles.MoveClicked = false;
+            if (MoveFiles.DestinationPath != "" && MoveFiles.DestinationPath != null)
+            {
+                SetButtonUI(MoveFiles.DestinationPath, destPictureBox, destLabel, false);
+                MoveFiles.MoveClicked = false;
+            }
         }
 
         private void SetButtonUI(string path, PictureBox pictureBox, Label label, bool isSource)
