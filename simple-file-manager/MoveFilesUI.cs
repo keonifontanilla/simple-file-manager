@@ -69,7 +69,6 @@ namespace simple_file_manager
             }
         }
 
-        // Fix when focused item is changed in the listView. Destinatin path keeps changing
         private void MoveFile()
         {
             try
@@ -87,7 +86,7 @@ namespace simple_file_manager
 
         private void RefreshListView()
         {
-            foreach (var refs in MoveFiles.openFolderUIRefs)
+            foreach (var refs in MoveFiles.OpenFolderUIRefs)
             {
                 // refs.LoadDirectoryAndFiles(MoveFiles.SourcePath.Substring(0, MoveFiles.DestinationPath.LastIndexOf("\\")));
                 // refs.LoadDirectoryAndFiles(destinationPath);
@@ -123,6 +122,7 @@ namespace simple_file_manager
         private void setButton2_Click(object sender, EventArgs e)
         {
             SetButtonUI(MoveFiles.DestinationPath, destPictureBox, destLabel, false);
+            MoveFiles.MoveClicked = false;
         }
 
         private void SetButtonUI(string path, PictureBox pictureBox, Label label, bool isSource)

@@ -126,19 +126,20 @@ namespace simple_file_manager
 
         private void moveButton_Click(object sender, EventArgs e)
         {
-            //if (!moveButtonClicked)
+            //if (!MoveFiles.MoveClicked)
             //{
             //    moveFilesUI.Show();
             //    moveButton.Text = "Cancel move.";
-            //    moveButtonClicked = true;
+            //    MoveFiles.MoveClicked = true;
             //}
             //else
             //{
             //    moveFilesUI.Hide();
             //    moveButton.Text = "Move";
-            //    moveButtonClicked = false;
+            //    MoveFiles.MoveClicked = false;
             //}
-            // MoveFiles.openFolderUIRefs.Add(this);
+            // MoveFiles.OpenFolderUIRefs.Add(this);
+            MoveFiles.MoveClicked = true;
             moveFilesUI.Show();
         }
 
@@ -146,12 +147,12 @@ namespace simple_file_manager
         {
             var path = this.path;
 
-            if (MoveFiles.IsSource)
+            if (MoveFiles.IsSource && MoveFiles.MoveClicked)
             {
                 MoveFiles.SourcePath = path += "\\" + folderListView.FocusedItem.Text;
                 MoveFiles.Name = folderListView.FocusedItem.Text;
             }
-            else
+            else if (!MoveFiles.IsSource && MoveFiles.MoveClicked)
             {
                 MoveFiles.DestinationPath = path += "\\" + folderListView.FocusedItem.Text;
                 MoveFiles.Name = folderListView.FocusedItem.Text;
@@ -165,7 +166,7 @@ namespace simple_file_manager
 
         private void OpenFolderUI_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MoveFiles.openFolderUIRefs.Remove(this);
+            MoveFiles.OpenFolderUIRefs.Remove(this);
         }
     }
 }
