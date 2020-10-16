@@ -21,7 +21,7 @@ namespace simple_file_manager
             DestinationPath = "";
             IsSource = true;
             Name = "";
-            openFolderUIRefs = new List<OpenFolderUI>();
+            // openFolderUIRefs = new List<OpenFolderUI>();
         }
     }
 }

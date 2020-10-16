@@ -166,6 +166,7 @@
             this.Controls.Add(this.folderListView);
             this.Name = "OpenFolderUI";
             this.Text = "OpenFolderUI";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OpenFolderUI_FormClosed);
             this.sideBarPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

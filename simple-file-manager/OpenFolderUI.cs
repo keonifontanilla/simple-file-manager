@@ -138,7 +138,7 @@ namespace simple_file_manager
             //    moveButton.Text = "Move";
             //    moveButtonClicked = false;
             //}
-            MoveFiles.openFolderUIRefs.Add(this);
+            // MoveFiles.openFolderUIRefs.Add(this);
             moveFilesUI.Show();
         }
 
@@ -156,6 +156,16 @@ namespace simple_file_manager
                 MoveFiles.DestinationPath = path += "\\" + folderListView.FocusedItem.Text;
                 MoveFiles.Name = folderListView.FocusedItem.Text;
             }
+        }
+
+        public void RefreshListView()
+        {
+            LoadDirectoryAndFiles(this.path);
+        }
+
+        private void OpenFolderUI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MoveFiles.openFolderUIRefs.Remove(this);
         }
     }
 }

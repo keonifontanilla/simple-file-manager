@@ -21,7 +21,16 @@ namespace simple_file_manager
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            MoveFolders(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
+            var fileAttributes = File.GetAttributes(MoveFiles.SourcePath);
+
+            if ((fileAttributes & FileAttributes.Directory) == FileAttributes.Directory)
+            {
+                MoveFolders(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
+            }
+            else
+            {
+                MoveFile();
+            }
         }
 
         private void MoveFolders(string sourcePath, string destinationPath)
@@ -32,14 +41,8 @@ namespace simple_file_manager
                 {
                     if (!Directory.Exists(destinationPath))
                     {
+                        // Moves and creates new folder if folder doesn't exist
                         Directory.Move(sourcePath, destinationPath);
-
-                        // Fix this
-                        foreach (var refs in MoveFiles.openFolderUIRefs)
-                        {
-                            // refs.LoadDirectoryAndFiles(MoveFiles.SourcePath.Substring(0, MoveFiles.DestinationPath.LastIndexOf("\\")));
-                            refs.LoadDirectoryAndFiles(destinationPath);
-                        }
                     }
                     else
                     {
@@ -56,12 +59,41 @@ namespace simple_file_manager
                         }
                     }
 
+                    RefreshListView();
                     Reset();
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("Move failed.");
+            }
+        }
+
+        // Fix when focused item is changed in the listView. Destinatin path keeps changing
+        private void MoveFile()
+        {
+            try
+            {
+                File.Copy(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text, true);
+
+                RefreshListView();
+                Reset();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Move failed.");
+            }
+        }
+
+        private void RefreshListView()
+        {
+            foreach (var refs in MoveFiles.openFolderUIRefs)
+            {
+                // refs.LoadDirectoryAndFiles(MoveFiles.SourcePath.Substring(0, MoveFiles.DestinationPath.LastIndexOf("\\")));
+                // refs.LoadDirectoryAndFiles(destinationPath);
+                // var i = refs.Controls["folderListView"] as ListView;
+                // i.Items.Clear();
+                refs.RefreshListView();
             }
         }
 

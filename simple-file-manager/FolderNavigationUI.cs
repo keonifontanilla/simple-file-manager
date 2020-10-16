@@ -39,6 +39,7 @@ namespace simple_file_manager
             var rootDrive = Path.GetPathRoot(Environment.GetFolderPath(Environment.SpecialFolder.System));
             
             openFolderUI = new OpenFolderUI(moveFilesUI, rootDrive);
+            MoveFiles.openFolderUIRefs.Add(openFolderUI);
             openFolderUI.Show();
         }
 
@@ -47,6 +48,7 @@ namespace simple_file_manager
             var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
             openFolderUI = new OpenFolderUI(moveFilesUI, desktopPath);
+            MoveFiles.openFolderUIRefs.Add(openFolderUI);
             openFolderUI.Show();
         }
 
@@ -55,6 +57,7 @@ namespace simple_file_manager
             var downloadsPath = Environment.ExpandEnvironmentVariables(@"%userprofile%\downloads");
 
             openFolderUI = new OpenFolderUI(moveFilesUI, downloadsPath);
+            MoveFiles.openFolderUIRefs.Add(openFolderUI);
             openFolderUI.Show();
         }
 
@@ -92,6 +95,7 @@ namespace simple_file_manager
             if (paths[index] != null)
             {
                 openFolderUI = new OpenFolderUI(moveFilesUI, paths[index]);
+                MoveFiles.openFolderUIRefs.Add(openFolderUI);
                 openFolderUI.Show();
             }
             else
