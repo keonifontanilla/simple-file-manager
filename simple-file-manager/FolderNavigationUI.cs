@@ -64,7 +64,7 @@ namespace simple_file_manager
             openFolderUI.Show();
         }
 
-        // Fix when add folder is created and moved, the path is changed
+        // Fix when UI folder is opened and path is changed from move
         private void SetUp(string path)
         {
             openFolderUI = new OpenFolderUI(moveFilesUI, path);
@@ -102,6 +102,7 @@ namespace simple_file_manager
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     paths[index] = folderBrowserDialog.SelectedPath;
+                    MoveFiles.mainUIUpdatedpaths[index] = folderBrowserDialog.SelectedPath;
                     AddFolderIcon(folderButton, removeButton);
                     lblName.Text = paths[index].Substring(paths[index].LastIndexOf("\\") + 1);
 
@@ -115,9 +116,16 @@ namespace simple_file_manager
         {
             if (paths[index] != null)
             {
-                // openFolderUI = new OpenFolderUI(moveFilesUI, paths[index]);
-                // MoveFiles.OpenFolderUIRefs.Add(openFolderUI);
-                SetUp(paths[index]);
+                if (paths[index] != MoveFiles.mainUIUpdatedpaths[index])
+                {
+                    // openFolderUI = new OpenFolderUI(moveFilesUI, paths[index]);
+                    // MoveFiles.OpenFolderUIRefs.Add(openFolderUI);
+                    SetUp(MoveFiles.mainUIUpdatedpaths[index]);
+                }
+                else
+                {
+                    SetUp(paths[index]);
+                }
                 openFolderUI.Show();
             }
             else

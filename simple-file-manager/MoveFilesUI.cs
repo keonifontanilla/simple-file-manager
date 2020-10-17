@@ -19,15 +19,17 @@ namespace simple_file_manager
             InitializeComponent();
         }
 
-        // Fix when hitting ok but did not set destination path in UI
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            if (MoveFiles.SourcePath != null && MoveFiles.SourcePath != "")
+            if (MoveFiles.SourcePath != null && MoveFiles.SourcePath != "" && destPictureBox.Image != null)
             {
                 var fileAttributes = File.GetAttributes(MoveFiles.SourcePath);
 
                 if ((fileAttributes & FileAttributes.Directory) == FileAttributes.Directory)
                 {
+                    // Old path for folders on main UI
+                    var index = Array.FindIndex(MoveFiles.mainUIUpdatedpaths, x => x == MoveFiles.SourcePath);
+                    if (index != -1) MoveFiles.mainUIUpdatedpaths[index] = MoveFiles.DestinationPath + "\\" + sourceLabel.Text;
                     MoveFolders(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
                 }
                 else
@@ -92,10 +94,6 @@ namespace simple_file_manager
         {
             foreach (var refs in MoveFiles.OpenFolderUIRefs)
             {
-                // refs.LoadDirectoryAndFiles(MoveFiles.SourcePath.Substring(0, MoveFiles.DestinationPath.LastIndexOf("\\")));
-                // refs.LoadDirectoryAndFiles(destinationPath);
-                // var i = refs.Controls["folderListView"] as ListView;
-                // i.Items.Clear();
                 refs.RefreshListView();
             }
         }

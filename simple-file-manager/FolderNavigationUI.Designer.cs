@@ -314,56 +314,92 @@
             // 
             // removeButton1
             // 
+            this.removeButton1.BackColor = System.Drawing.Color.Transparent;
+            this.removeButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeButton1.BackgroundImage")));
+            this.removeButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removeButton1.FlatAppearance.BorderSize = 0;
+            this.removeButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(103)))), ((int)(((byte)(147)))));
+            this.removeButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeButton1.Location = new System.Drawing.Point(144, 228);
             this.removeButton1.Name = "removeButton1";
             this.removeButton1.Size = new System.Drawing.Size(19, 15);
             this.removeButton1.TabIndex = 30;
-            this.removeButton1.UseVisualStyleBackColor = true;
+            this.removeButton1.UseVisualStyleBackColor = false;
             this.removeButton1.Visible = false;
             // 
             // removeButton2
             // 
+            this.removeButton2.BackColor = System.Drawing.Color.Transparent;
+            this.removeButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeButton2.BackgroundImage")));
+            this.removeButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removeButton2.FlatAppearance.BorderSize = 0;
+            this.removeButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(103)))), ((int)(((byte)(147)))));
+            this.removeButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeButton2.Location = new System.Drawing.Point(374, 224);
             this.removeButton2.Name = "removeButton2";
             this.removeButton2.Size = new System.Drawing.Size(19, 15);
             this.removeButton2.TabIndex = 31;
-            this.removeButton2.UseVisualStyleBackColor = true;
+            this.removeButton2.UseVisualStyleBackColor = false;
             this.removeButton2.Visible = false;
             // 
             // removeButton3
             // 
+            this.removeButton3.BackColor = System.Drawing.Color.Transparent;
+            this.removeButton3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeButton3.BackgroundImage")));
+            this.removeButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removeButton3.FlatAppearance.BorderSize = 0;
+            this.removeButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(103)))), ((int)(((byte)(147)))));
+            this.removeButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeButton3.Location = new System.Drawing.Point(594, 224);
             this.removeButton3.Name = "removeButton3";
             this.removeButton3.Size = new System.Drawing.Size(19, 15);
             this.removeButton3.TabIndex = 32;
-            this.removeButton3.UseVisualStyleBackColor = true;
+            this.removeButton3.UseVisualStyleBackColor = false;
             this.removeButton3.Visible = false;
             // 
             // removeButton4
             // 
+            this.removeButton4.BackColor = System.Drawing.Color.Transparent;
+            this.removeButton4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeButton4.BackgroundImage")));
+            this.removeButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removeButton4.FlatAppearance.BorderSize = 0;
+            this.removeButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(103)))), ((int)(((byte)(147)))));
+            this.removeButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeButton4.Location = new System.Drawing.Point(144, 379);
             this.removeButton4.Name = "removeButton4";
             this.removeButton4.Size = new System.Drawing.Size(19, 15);
             this.removeButton4.TabIndex = 33;
-            this.removeButton4.UseVisualStyleBackColor = true;
+            this.removeButton4.UseVisualStyleBackColor = false;
             this.removeButton4.Visible = false;
             // 
             // removeButton5
             // 
+            this.removeButton5.BackColor = System.Drawing.Color.Transparent;
+            this.removeButton5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeButton5.BackgroundImage")));
+            this.removeButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removeButton5.FlatAppearance.BorderSize = 0;
+            this.removeButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(103)))), ((int)(((byte)(147)))));
+            this.removeButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeButton5.Location = new System.Drawing.Point(374, 379);
             this.removeButton5.Name = "removeButton5";
             this.removeButton5.Size = new System.Drawing.Size(19, 15);
             this.removeButton5.TabIndex = 34;
-            this.removeButton5.UseVisualStyleBackColor = true;
+            this.removeButton5.UseVisualStyleBackColor = false;
             this.removeButton5.Visible = false;
             // 
             // removeButton6
             // 
+            this.removeButton6.BackColor = System.Drawing.Color.Transparent;
+            this.removeButton6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeButton6.BackgroundImage")));
+            this.removeButton6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removeButton6.FlatAppearance.BorderSize = 0;
+            this.removeButton6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(103)))), ((int)(((byte)(147)))));
+            this.removeButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeButton6.Location = new System.Drawing.Point(594, 379);
             this.removeButton6.Name = "removeButton6";
             this.removeButton6.Size = new System.Drawing.Size(19, 15);
             this.removeButton6.TabIndex = 35;
-            this.removeButton6.UseVisualStyleBackColor = true;
+            this.removeButton6.UseVisualStyleBackColor = false;
             this.removeButton6.Visible = false;
             // 
             // FolderNavigationUI

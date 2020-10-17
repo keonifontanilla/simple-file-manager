@@ -19,7 +19,6 @@ namespace simple_file_manager
         private string rootPath = "";
         private string path = "";
         private bool isFile = false;
-        private bool moveButtonClicked = false;
 
         public OpenFolderUI(MoveFilesUI moveFilesUI, string rootPath)
         {
@@ -126,19 +125,6 @@ namespace simple_file_manager
 
         private void moveButton_Click(object sender, EventArgs e)
         {
-            //if (!MoveFiles.MoveClicked)
-            //{
-            //    moveFilesUI.Show();
-            //    moveButton.Text = "Cancel move.";
-            //    MoveFiles.MoveClicked = true;
-            //}
-            //else
-            //{
-            //    moveFilesUI.Hide();
-            //    moveButton.Text = "Move";
-            //    MoveFiles.MoveClicked = false;
-            //}
-            // MoveFiles.OpenFolderUIRefs.Add(this);
             MoveFiles.MoveClicked = true;
             moveFilesUI.Show();
         }
