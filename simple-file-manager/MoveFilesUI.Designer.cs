@@ -144,6 +144,7 @@
             this.Controls.Add(this.sourcePictureBox);
             this.Name = "MoveFilesUI";
             this.Text = "MoveFilesUI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MoveFilesUI_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.sourcePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.destPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightArrowPictureBox)).EndInit();

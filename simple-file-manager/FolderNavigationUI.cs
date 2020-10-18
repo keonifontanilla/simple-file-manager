@@ -37,9 +37,7 @@ namespace simple_file_manager
         {
             // Get path for correct hard drive e.g. C
             var rootDrive = Path.GetPathRoot(Environment.GetFolderPath(Environment.SpecialFolder.System));
-
-            // openFolderUI = new OpenFolderUI(moveFilesUI, rootDrive);
-            // MoveFiles.OpenFolderUIRefs.Add(openFolderUI);
+            
             SetUp(rootDrive);
             openFolderUI.Show();
         }
@@ -48,8 +46,6 @@ namespace simple_file_manager
         {
             var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            // openFolderUI = new OpenFolderUI(moveFilesUI, desktopPath);
-            // MoveFiles.OpenFolderUIRefs.Add(openFolderUI);
             SetUp(desktopPath);
             openFolderUI.Show();
         }
@@ -58,8 +54,6 @@ namespace simple_file_manager
         {
             var downloadsPath = Environment.ExpandEnvironmentVariables(@"%userprofile%\downloads");
 
-            // openFolderUI = new OpenFolderUI(moveFilesUI, downloadsPath);
-            // MoveFiles.OpenFolderUIRefs.Add(openFolderUI);
             SetUp(downloadsPath);
             openFolderUI.Show();
         }
@@ -118,8 +112,6 @@ namespace simple_file_manager
             {
                 if (paths[index] != MoveFiles.mainUIUpdatedpaths[index])
                 {
-                    // openFolderUI = new OpenFolderUI(moveFilesUI, paths[index]);
-                    // MoveFiles.OpenFolderUIRefs.Add(openFolderUI);
                     SetUp(MoveFiles.mainUIUpdatedpaths[index]);
                 }
                 else

@@ -145,9 +145,19 @@ namespace simple_file_manager
             }
         }
 
-        public void RefreshListView()
+        public void RefreshListView(string path)
         {
-            LoadDirectoryAndFiles(this.path);
+            // Check for when the folder on the main ui is moved while open
+            if (Directory.Exists(this.path))
+            {
+                LoadDirectoryAndFiles(this.path);
+            }
+            else
+            {
+                this.path = path;
+                this.rootPath = path;
+                LoadDirectoryAndFiles(path);
+            }
         }
 
         private void OpenFolderUI_FormClosed(object sender, FormClosedEventArgs e)

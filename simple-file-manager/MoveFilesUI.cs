@@ -94,7 +94,8 @@ namespace simple_file_manager
         {
             foreach (var refs in MoveFiles.OpenFolderUIRefs)
             {
-                refs.RefreshListView();
+                // Pass in destination path for when the folder on the main ui is moved while open
+                refs.RefreshListView(MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
             }
         }
 
@@ -145,6 +146,16 @@ namespace simple_file_manager
         private Point PostionLabel(PictureBox pictureBox, Label label)
         {
             return new Point(pictureBox.Location.X + ((pictureBox.Size.Width - label.Size.Width) / 2), pictureBox.Bottom);
+        }
+
+        private void MoveFilesUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Reset();
+                Hide();
+            }
         }
     }
 }
