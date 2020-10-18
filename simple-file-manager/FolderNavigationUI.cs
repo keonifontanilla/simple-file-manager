@@ -169,6 +169,7 @@ namespace simple_file_manager
             folderLabel.Text = "";
             removeButton.Visible = false;
             paths[index - 1] = null;
+            MoveFiles.mainUIUpdatedpaths[index - 1] = null;
         }
     }
 }
