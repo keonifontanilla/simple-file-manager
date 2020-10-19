@@ -21,6 +21,9 @@ namespace simple_file_manager
         MoveFilesUI moveFilesUI;
         private String[] paths = new String[6];
 
+        private Point lastLocation;
+        private bool mouseDown = false;
+
         public FolderNavigationUI()
         {
             moveFilesUI = new MoveFilesUI();
@@ -170,6 +173,27 @@ namespace simple_file_manager
             removeButton.Visible = false;
             paths[index - 1] = null;
             MoveFiles.mainUIUpdatedpaths[index - 1] = null;
+        }
+
+        private void topBarPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void topBarPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void topBarPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }
