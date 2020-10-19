@@ -40,6 +40,8 @@
             this.newFolderButton = new System.Windows.Forms.Button();
             this.sideBarPanel = new System.Windows.Forms.Panel();
             this.moveButton = new System.Windows.Forms.Button();
+            this.sortByNameButton = new System.Windows.Forms.Button();
+            this.sortByDate = new System.Windows.Forms.Button();
             this.sideBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -132,6 +134,8 @@
             // sideBarPanel
             // 
             this.sideBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.sideBarPanel.Controls.Add(this.sortByDate);
+            this.sideBarPanel.Controls.Add(this.sortByNameButton);
             this.sideBarPanel.Controls.Add(this.moveButton);
             this.sideBarPanel.Controls.Add(this.homeButton);
             this.sideBarPanel.Controls.Add(this.newFolderButton);
@@ -153,6 +157,28 @@
             this.moveButton.UseVisualStyleBackColor = true;
             this.moveButton.Click += new System.EventHandler(this.moveButton_Click);
             // 
+            // sortByNameButton
+            // 
+            this.sortByNameButton.AutoSize = true;
+            this.sortByNameButton.Location = new System.Drawing.Point(32, 462);
+            this.sortByNameButton.Name = "sortByNameButton";
+            this.sortByNameButton.Size = new System.Drawing.Size(81, 23);
+            this.sortByNameButton.TabIndex = 9;
+            this.sortByNameButton.Text = "Sort by Name";
+            this.sortByNameButton.UseVisualStyleBackColor = true;
+            this.sortByNameButton.Click += new System.EventHandler(this.sortByNameButton_Click);
+            // 
+            // sortByDate
+            // 
+            this.sortByDate.AutoSize = true;
+            this.sortByDate.Location = new System.Drawing.Point(32, 497);
+            this.sortByDate.Name = "sortByDate";
+            this.sortByDate.Size = new System.Drawing.Size(81, 23);
+            this.sortByDate.TabIndex = 10;
+            this.sortByDate.Text = "Sort by Date";
+            this.sortByDate.UseVisualStyleBackColor = true;
+            this.sortByDate.Click += new System.EventHandler(this.sortByDate_Click);
+            // 
             // OpenFolderUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,6 +194,7 @@
             this.Text = "OpenFolderUI";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OpenFolderUI_FormClosed);
             this.sideBarPanel.ResumeLayout(false);
+            this.sideBarPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,5 +213,7 @@
         private System.Windows.Forms.Button newFolderButton;
         private System.Windows.Forms.Panel sideBarPanel;
         private System.Windows.Forms.Button moveButton;
+        private System.Windows.Forms.Button sortByDate;
+        private System.Windows.Forms.Button sortByNameButton;
     }
 }

@@ -19,6 +19,7 @@ namespace simple_file_manager
         private string rootPath = "";
         private string path = "";
         private bool isFile = false;
+        private bool sortByDateClicked = false;
 
         public OpenFolderUI(MoveFilesUI moveFilesUI, string rootPath)
         {
@@ -32,9 +33,21 @@ namespace simple_file_manager
 
         public void LoadDirectoryAndFiles(string path)
         {
+            DirectoryInfo[] directories;
+            FileInfo[] files;
+
             // Get directories and file but exclude hidden directories and files
-            var directories = new DirectoryInfo(path).GetDirectories().Where(x => (x.Attributes & FileAttributes.Hidden) == 0).ToArray();
-            var files = new DirectoryInfo(path).GetFiles().Where(x => (x.Attributes & FileAttributes.Hidden) == 0).ToArray();
+            if (sortByDateClicked)
+            {
+                directories = new DirectoryInfo(path).GetDirectories().Where(x => (x.Attributes & FileAttributes.Hidden) == 0).OrderByDescending(x => x.LastWriteTime.Year <= 1601 ? x.CreationTime : x.LastWriteTime).ToArray();
+                files = new DirectoryInfo(path).GetFiles().Where(x => (x.Attributes & FileAttributes.Hidden) == 0).OrderByDescending(x => x.LastWriteTime.Year <= 1601 ? x.CreationTime : x.LastWriteTime).ToArray();
+                sortByDateClicked = false;
+            }
+            else
+            {
+                directories = new DirectoryInfo(path).GetDirectories().Where(x => (x.Attributes & FileAttributes.Hidden) == 0).ToArray();
+                files = new DirectoryInfo(path).GetFiles().Where(x => (x.Attributes & FileAttributes.Hidden) == 0).ToArray();
+            }
 
             folderListView.Items.Clear();
 
@@ -169,6 +182,17 @@ namespace simple_file_manager
         private void OpenFolderUI_FormClosed(object sender, FormClosedEventArgs e)
         {
             MoveFiles.OpenFolderUIRefs.Remove(this);
+        }
+
+        private void sortByNameButton_Click(object sender, EventArgs e)
+        {
+            LoadDirectoryAndFiles(this.path);
+        }
+
+        private void sortByDate_Click(object sender, EventArgs e)
+        {
+            sortByDateClicked = true;
+            LoadDirectoryAndFiles(this.path);
         }
     }
 }
