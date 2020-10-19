@@ -62,9 +62,13 @@ namespace simple_file_manager
                         foreach (var subDirectory in new DirectoryInfo(sourcePath).GetDirectories())
                         {
                             MoveFolders(subDirectory.FullName, $@"{destinationPath}\{subDirectory.Name}");
-                        }
+                        }    
                     }
 
+                    if (Directory.Exists(MoveFiles.SourcePath))
+                    {
+                        Directory.Delete(MoveFiles.SourcePath, true);
+                    }
                     RefreshListView();
                     Reset();
                 }
@@ -80,6 +84,7 @@ namespace simple_file_manager
             try
             {
                 File.Copy(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text, true);
+                File.Delete(MoveFiles.SourcePath);
 
                 RefreshListView();
                 Reset();
