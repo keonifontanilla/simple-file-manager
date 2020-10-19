@@ -61,7 +61,12 @@ namespace simple_file_manager
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            // Case insensitive search
+            var listItems = folderListView.Items.Cast<ListViewItem>().Where(x => x.Text.IndexOf(searchTextBox.Text, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
 
+            folderListView.Items.Clear();
+
+            listItems.ForEach(x => folderListView.Items.Add(x));
         }
 
         private void openButton_Click(object sender, EventArgs e)
@@ -75,6 +80,7 @@ namespace simple_file_manager
             if (isFile)
             {
                 Process.Start(this.path);
+
                 // Removes the file name at the end of the path
                 this.path = this.path.Substring(0, this.path.LastIndexOf("\\"));
             }
