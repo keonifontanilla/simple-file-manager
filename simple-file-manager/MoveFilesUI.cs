@@ -31,6 +31,17 @@ namespace simple_file_manager
                     var index = Array.FindIndex(MoveFiles.mainUIUpdatedpaths, x => x == MoveFiles.SourcePath);
                     if (index != -1) MoveFiles.mainUIUpdatedpaths[index] = MoveFiles.DestinationPath + "\\" + sourceLabel.Text;
                     MoveFolders(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
+                    
+                    // Breaks when folder is on main UI
+                    /*
+                    if (Directory.Exists(MoveFiles.SourcePath))
+                    {
+                        Directory.Delete(MoveFiles.SourcePath, true);
+                    }
+                    */
+
+                    RefreshListView();
+                    Reset();
                 }
                 else
                 {
@@ -64,13 +75,6 @@ namespace simple_file_manager
                             MoveFolders(subDirectory.FullName, $@"{destinationPath}\{subDirectory.Name}");
                         }    
                     }
-
-                    if (Directory.Exists(MoveFiles.SourcePath))
-                    {
-                        Directory.Delete(MoveFiles.SourcePath, true);
-                    }
-                    RefreshListView();
-                    Reset();
                 }
             }
             catch (Exception)
@@ -84,7 +88,7 @@ namespace simple_file_manager
             try
             {
                 File.Copy(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text, true);
-                File.Delete(MoveFiles.SourcePath);
+                // File.Delete(MoveFiles.SourcePath);
 
                 RefreshListView();
                 Reset();
