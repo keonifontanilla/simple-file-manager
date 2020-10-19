@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,7 +22,7 @@ namespace simple_file_manager
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            if (MoveFiles.SourcePath != null && MoveFiles.SourcePath != "" && destPictureBox.Image != null)
+            if ((MoveFiles.SourcePath != null) && (MoveFiles.SourcePath != "") && (destPictureBox.Image != null) && (MoveFiles.SourcePath != MoveFiles.DestinationPath + "\\" + sourceLabel.Text))
             {
                 var fileAttributes = File.GetAttributes(MoveFiles.SourcePath);
 
@@ -31,15 +32,8 @@ namespace simple_file_manager
                     var index = Array.FindIndex(MoveFiles.mainUIUpdatedpaths, x => x == MoveFiles.SourcePath);
                     if (index != -1) MoveFiles.mainUIUpdatedpaths[index] = MoveFiles.DestinationPath + "\\" + sourceLabel.Text;
                     MoveFolders(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
-                    
-                    // Breaks when folder is on main UI
-                    /*
-                    if (Directory.Exists(MoveFiles.SourcePath))
-                    {
-                        Directory.Delete(MoveFiles.SourcePath, true);
-                    }
-                    */
 
+                    SendToRecycleBin();
                     RefreshListView();
                     Reset();
                 }
@@ -88,14 +82,32 @@ namespace simple_file_manager
             try
             {
                 File.Copy(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text, true);
-                // File.Delete(MoveFiles.SourcePath);
-
+                
+                SendToRecycleBin();
                 RefreshListView();
                 Reset();
             }
             catch (Exception)
             {
                 MessageBox.Show("Move failed.");
+            }
+        }
+
+        private void SendToRecycleBin()
+        {
+            if (Directory.Exists(MoveFiles.SourcePath))
+            {
+                Microsoft.VisualBasic.FileIO.FileSystem.DeleteDirectory(
+                    MoveFiles.SourcePath, 
+                    Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, 
+                    Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
+            }
+            else if (File.Exists(MoveFiles.SourcePath))
+            {
+                Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(
+                    MoveFiles.SourcePath,
+                    Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs,
+                    Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
             }
         }
 
