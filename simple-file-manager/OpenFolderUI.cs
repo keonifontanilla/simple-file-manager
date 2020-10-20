@@ -15,6 +15,7 @@ namespace simple_file_manager
     public partial class OpenFolderUI : Form
     {
         MoveFilesUI moveFilesUI;
+        TopBar topBar;
 
         private string rootPath = "";
         private string path = "";
@@ -53,6 +54,19 @@ namespace simple_file_manager
 
             LoadDirectory(directories);
             LoadFiles(files);
+            FormatTopBar();
+        }
+
+        private void FormatTopBar()
+        {
+            var index = topBarPanel.Controls.IndexOf(topBar);
+
+            if (index != -1) topBarPanel.Controls.RemoveAt(index);
+
+            topBar = new TopBar(topBarPanel, path);
+            topBar.Dock = DockStyle.Top;
+
+            topBarPanel.Controls.Add(topBar);
         }
 
         private void LoadDirectory(DirectoryInfo[] directories)

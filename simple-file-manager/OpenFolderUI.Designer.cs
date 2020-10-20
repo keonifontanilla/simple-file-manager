@@ -39,9 +39,10 @@
             this.openButton = new System.Windows.Forms.Button();
             this.newFolderButton = new System.Windows.Forms.Button();
             this.sideBarPanel = new System.Windows.Forms.Panel();
-            this.moveButton = new System.Windows.Forms.Button();
-            this.sortByNameButton = new System.Windows.Forms.Button();
             this.sortByDate = new System.Windows.Forms.Button();
+            this.sortByNameButton = new System.Windows.Forms.Button();
+            this.moveButton = new System.Windows.Forms.Button();
+            this.topBarPanel = new System.Windows.Forms.Panel();
             this.sideBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             // 
             this.folderListView.HideSelection = false;
             this.folderListView.LargeImageList = this.iconsList;
-            this.folderListView.Location = new System.Drawing.Point(142, 59);
+            this.folderListView.Location = new System.Drawing.Point(144, 116);
             this.folderListView.Name = "folderListView";
             this.folderListView.Size = new System.Drawing.Size(782, 426);
             this.folderListView.SmallImageList = this.iconsList;
@@ -85,7 +86,7 @@
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(201, 20);
+            this.searchTextBox.Location = new System.Drawing.Point(203, 77);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(639, 20);
             this.searchTextBox.TabIndex = 3;
@@ -95,7 +96,7 @@
             this.SearchLabel.AutoSize = true;
             this.SearchLabel.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchLabel.ForeColor = System.Drawing.Color.White;
-            this.SearchLabel.Location = new System.Drawing.Point(138, 20);
+            this.SearchLabel.Location = new System.Drawing.Point(140, 77);
             this.SearchLabel.Name = "SearchLabel";
             this.SearchLabel.Size = new System.Drawing.Size(57, 20);
             this.SearchLabel.TabIndex = 4;
@@ -103,7 +104,7 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(846, 20);
+            this.searchButton.Location = new System.Drawing.Point(848, 77);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(78, 20);
             this.searchButton.TabIndex = 5;
@@ -144,8 +145,30 @@
             this.sideBarPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sideBarPanel.Location = new System.Drawing.Point(0, 0);
             this.sideBarPanel.Name = "sideBarPanel";
-            this.sideBarPanel.Size = new System.Drawing.Size(136, 532);
+            this.sideBarPanel.Size = new System.Drawing.Size(136, 555);
             this.sideBarPanel.TabIndex = 8;
+            // 
+            // sortByDate
+            // 
+            this.sortByDate.AutoSize = true;
+            this.sortByDate.Location = new System.Drawing.Point(32, 519);
+            this.sortByDate.Name = "sortByDate";
+            this.sortByDate.Size = new System.Drawing.Size(81, 23);
+            this.sortByDate.TabIndex = 10;
+            this.sortByDate.Text = "Sort by Date";
+            this.sortByDate.UseVisualStyleBackColor = true;
+            this.sortByDate.Click += new System.EventHandler(this.sortByDate_Click);
+            // 
+            // sortByNameButton
+            // 
+            this.sortByNameButton.AutoSize = true;
+            this.sortByNameButton.Location = new System.Drawing.Point(32, 484);
+            this.sortByNameButton.Name = "sortByNameButton";
+            this.sortByNameButton.Size = new System.Drawing.Size(81, 23);
+            this.sortByNameButton.TabIndex = 9;
+            this.sortByNameButton.Text = "Sort by Name";
+            this.sortByNameButton.UseVisualStyleBackColor = true;
+            this.sortByNameButton.Click += new System.EventHandler(this.sortByNameButton_Click);
             // 
             // moveButton
             // 
@@ -157,39 +180,28 @@
             this.moveButton.UseVisualStyleBackColor = true;
             this.moveButton.Click += new System.EventHandler(this.moveButton_Click);
             // 
-            // sortByNameButton
+            // topBarPanel
             // 
-            this.sortByNameButton.AutoSize = true;
-            this.sortByNameButton.Location = new System.Drawing.Point(32, 462);
-            this.sortByNameButton.Name = "sortByNameButton";
-            this.sortByNameButton.Size = new System.Drawing.Size(81, 23);
-            this.sortByNameButton.TabIndex = 9;
-            this.sortByNameButton.Text = "Sort by Name";
-            this.sortByNameButton.UseVisualStyleBackColor = true;
-            this.sortByNameButton.Click += new System.EventHandler(this.sortByNameButton_Click);
-            // 
-            // sortByDate
-            // 
-            this.sortByDate.AutoSize = true;
-            this.sortByDate.Location = new System.Drawing.Point(32, 497);
-            this.sortByDate.Name = "sortByDate";
-            this.sortByDate.Size = new System.Drawing.Size(81, 23);
-            this.sortByDate.TabIndex = 10;
-            this.sortByDate.Text = "Sort by Date";
-            this.sortByDate.UseVisualStyleBackColor = true;
-            this.sortByDate.Click += new System.EventHandler(this.sortByDate_Click);
+            this.topBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.topBarPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topBarPanel.Location = new System.Drawing.Point(136, 0);
+            this.topBarPanel.Name = "topBarPanel";
+            this.topBarPanel.Size = new System.Drawing.Size(802, 65);
+            this.topBarPanel.TabIndex = 30;
             // 
             // OpenFolderUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(930, 532);
+            this.ClientSize = new System.Drawing.Size(938, 555);
+            this.Controls.Add(this.topBarPanel);
             this.Controls.Add(this.sideBarPanel);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.SearchLabel);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.folderListView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OpenFolderUI";
             this.Text = "OpenFolderUI";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OpenFolderUI_FormClosed);
@@ -215,5 +227,6 @@
         private System.Windows.Forms.Button moveButton;
         private System.Windows.Forms.Button sortByDate;
         private System.Windows.Forms.Button sortByNameButton;
+        private System.Windows.Forms.Panel topBarPanel;
     }
 }
