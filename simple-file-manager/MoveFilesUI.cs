@@ -15,9 +15,15 @@ namespace simple_file_manager
 {
     public partial class MoveFilesUI : Form
     {
+        TopBar topBar;
+
         public MoveFilesUI()
         {
             InitializeComponent();
+
+            topBar = new TopBar(topBarPanel, "Move", 0);
+            topBar.Dock = DockStyle.Top;
+            topBarPanel.Controls.Add(topBar);
         }
 
         private void confirmButton_Click(object sender, EventArgs e)

@@ -24,7 +24,6 @@ namespace simple_file_manager
             IsSource = true;
             MoveClicked = false;
             Name = "";
-            // openFolderUIRefs = new List<OpenFolderUI>();
         }
     }
 }
