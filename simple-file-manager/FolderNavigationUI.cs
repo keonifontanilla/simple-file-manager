@@ -95,13 +95,22 @@ namespace simple_file_manager
             {
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
-                    paths[index] = folderBrowserDialog.SelectedPath;
-                    MoveFiles.mainUIUpdatedpaths[index] = folderBrowserDialog.SelectedPath;
-                    AddFolderIcon(folderButton, removeButton);
-                    lblName.Text = paths[index].Substring(paths[index].LastIndexOf("\\") + 1);
+                    var duplicatePath = paths.Where(x => x != null).Any(x => x.Equals(folderBrowserDialog.SelectedPath));
 
-                    // formating label location in the middle of folder icon
-                    lblName.Location = new Point(folderButton.Location.X + ((folderButton.Size.Width - lblName.Size.Width) / 2), folderButton.Bottom);
+                    if (!duplicatePath)
+                    {
+                        paths[index] = folderBrowserDialog.SelectedPath;
+                        MoveFiles.mainUIUpdatedpaths[index] = folderBrowserDialog.SelectedPath;
+                        AddFolderIcon(folderButton, removeButton);
+                        lblName.Text = paths[index].Substring(paths[index].LastIndexOf("\\") + 1);
+
+                        // formating label location in the middle of folder icon
+                        lblName.Location = new Point(folderButton.Location.X + ((folderButton.Size.Width - lblName.Size.Width) / 2), folderButton.Bottom);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Folder already on menu.");
+                    }
                 }
             }
         }
