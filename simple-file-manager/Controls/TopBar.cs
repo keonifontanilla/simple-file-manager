@@ -15,14 +15,16 @@ namespace simple_file_manager
         readonly Panel topBarPanel;
         private Point lastLocation;
         private bool mouseDown = false;
+        private int offset;
 
-        public TopBar(Panel topBarPanel, string name)
+        public TopBar(Panel topBarPanel, string name, int offset)
         {
             this.topBarPanel = topBarPanel;
+            this.offset = offset;
 
             InitializeComponent();
 
-            topBarLabel.Location = new Point((topBarPanel.Width - topBarLabel.Width - 136) / 2, (topBarPanel.Height - topBarLabel.Height) / 2);
+            topBarLabel.Location = new Point((topBarPanel.Width - topBarLabel.Width - offset) / 2, (topBarPanel.Height - topBarLabel.Height) / 2);
             topBarLabel.Text = LimitLabelLength(name.Substring(name.LastIndexOf("\\") + 1));
         }
 
@@ -49,7 +51,7 @@ namespace simple_file_manager
 
         private void topBarLabel_SizeChanged(object sender, EventArgs e)
         {
-            topBarLabel.Location = new Point((topBarPanel.Width - topBarLabel.Width - 136) / 2, (topBarPanel.Height - topBarLabel.Height) / 2);
+            topBarLabel.Location = new Point((topBarPanel.Width - topBarLabel.Width - offset) / 2, (topBarPanel.Height - topBarLabel.Height) / 2);
         }
 
         private string LimitLabelLength(string labelText)

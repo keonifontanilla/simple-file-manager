@@ -38,7 +38,6 @@
             this.folderLabel4 = new System.Windows.Forms.Label();
             this.folderLabel5 = new System.Windows.Forms.Label();
             this.folderLabel6 = new System.Windows.Forms.Label();
-            this.closeButton = new System.Windows.Forms.Button();
             this.addFolderButton1 = new System.Windows.Forms.Button();
             this.mainFolderButton = new System.Windows.Forms.Button();
             this.desktopfolderButton = new System.Windows.Forms.Button();
@@ -48,7 +47,6 @@
             this.addFolderButton4 = new System.Windows.Forms.Button();
             this.addFolderButton5 = new System.Windows.Forms.Button();
             this.addFolderButton6 = new System.Windows.Forms.Button();
-            this.formLabel = new System.Windows.Forms.Label();
             this.topBarPanel = new System.Windows.Forms.Panel();
             this.removeButton1 = new System.Windows.Forms.Button();
             this.removeButton2 = new System.Windows.Forms.Button();
@@ -56,7 +54,6 @@
             this.removeButton4 = new System.Windows.Forms.Button();
             this.removeButton5 = new System.Windows.Forms.Button();
             this.removeButton6 = new System.Windows.Forms.Button();
-            this.topBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainfolderLabel
@@ -142,18 +139,6 @@
             this.folderLabel6.Name = "folderLabel6";
             this.folderLabel6.Size = new System.Drawing.Size(0, 13);
             this.folderLabel6.TabIndex = 17;
-            // 
-            // closeButton
-            // 
-            this.closeButton.BackColor = System.Drawing.Color.Transparent;
-            this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
-            this.closeButton.Location = new System.Drawing.Point(597, 3);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(37, 29);
-            this.closeButton.TabIndex = 18;
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // addFolderButton1
             // 
@@ -290,30 +275,14 @@
             this.addFolderButton6.UseVisualStyleBackColor = false;
             this.addFolderButton6.Click += new System.EventHandler(this.addFolderButton6_Click);
             // 
-            // formLabel
-            // 
-            this.formLabel.AutoSize = true;
-            this.formLabel.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.formLabel.ForeColor = System.Drawing.Color.White;
-            this.formLabel.Location = new System.Drawing.Point(256, 18);
-            this.formLabel.Name = "formLabel";
-            this.formLabel.Size = new System.Drawing.Size(124, 24);
-            this.formLabel.TabIndex = 28;
-            this.formLabel.Text = "File Manager";
-            // 
             // topBarPanel
             // 
             this.topBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.topBarPanel.Controls.Add(this.closeButton);
-            this.topBarPanel.Controls.Add(this.formLabel);
             this.topBarPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topBarPanel.Location = new System.Drawing.Point(0, 0);
             this.topBarPanel.Name = "topBarPanel";
             this.topBarPanel.Size = new System.Drawing.Size(637, 65);
             this.topBarPanel.TabIndex = 29;
-            this.topBarPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.topBarPanel_MouseDown);
-            this.topBarPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.topBarPanel_MouseMove);
-            this.topBarPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.topBarPanel_MouseUp);
             // 
             // removeButton1
             // 
@@ -439,8 +408,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FolderNavigationUI";
             this.Text = "Simple File Manager";
-            this.topBarPanel.ResumeLayout(false);
-            this.topBarPanel.PerformLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FolderNavigationUI_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,7 +424,6 @@
         private System.Windows.Forms.Label folderLabel4;
         private System.Windows.Forms.Label folderLabel5;
         private System.Windows.Forms.Label folderLabel6;
-        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button addFolderButton1;
         private System.Windows.Forms.Button mainFolderButton;
         private System.Windows.Forms.Button desktopfolderButton;
@@ -466,7 +433,6 @@
         private System.Windows.Forms.Button addFolderButton4;
         private System.Windows.Forms.Button addFolderButton5;
         private System.Windows.Forms.Button addFolderButton6;
-        private System.Windows.Forms.Label formLabel;
         private System.Windows.Forms.Panel topBarPanel;
         private System.Windows.Forms.Button removeButton1;
         private System.Windows.Forms.Button removeButton2;

@@ -63,7 +63,7 @@ namespace simple_file_manager
 
             if (index != -1) topBarPanel.Controls.RemoveAt(index);
 
-            topBar = new TopBar(topBarPanel, path);
+            topBar = new TopBar(topBarPanel, path, sideBarPanel.Width);
             topBar.Dock = DockStyle.Top;
 
             topBarPanel.Controls.Add(topBar);

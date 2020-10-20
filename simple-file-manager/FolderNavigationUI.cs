@@ -17,23 +17,20 @@ namespace simple_file_manager
 {
     public partial class FolderNavigationUI : Form
     {
+        TopBar topBar;
         OpenFolderUI openFolderUI;
         MoveFilesUI moveFilesUI;
         private String[] paths = new String[6];
-
-        private Point lastLocation;
-        private bool mouseDown = false;
 
         public FolderNavigationUI()
         {
             moveFilesUI = new MoveFilesUI();
 
             InitializeComponent();
-        }
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
+            topBar = new TopBar(topBarPanel, "File Manager", 0);
+            topBar.Dock = DockStyle.Top;
+            topBarPanel.Controls.Add(topBar);
         }
 
         private void mainFolderButton_Click(object sender, EventArgs e)
@@ -175,25 +172,9 @@ namespace simple_file_manager
             MoveFiles.mainUIUpdatedpaths[index - 1] = null;
         }
 
-        private void topBarPanel_MouseDown(object sender, MouseEventArgs e)
+        private void FolderNavigationUI_FormClosing(object sender, FormClosingEventArgs e)
         {
-            mouseDown = true;
-            lastLocation = e.Location;
-        }
-
-        private void topBarPanel_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (mouseDown)
-            {
-                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
-
-                this.Update();
-            }
-        }
-
-        private void topBarPanel_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseDown = false;
+            Application.Exit();
         }
     }
 }
