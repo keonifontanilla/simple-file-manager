@@ -129,6 +129,18 @@ namespace simple_file_manager
         {
             this.path = this.rootPath;
             LoadDirectoryAndFiles(this.rootPath);
+
+            // Get the path of the home folder while it is open
+            if (MoveFiles.MoveClicked && MoveFiles.IsSource)
+            {
+                MoveFiles.SourcePath = this.rootPath;
+                MoveFiles.Name = this.rootPath.Substring(this.rootPath.LastIndexOf("\\") + 1);
+            }
+            else if(MoveFiles.MoveClicked && !MoveFiles.IsSource)
+            {
+                MoveFiles.DestinationPath = this.rootPath;
+                MoveFiles.Name = this.rootPath.Substring(this.rootPath.LastIndexOf("\\") + 1);
+            }
         }
 
         private void newFolderButton_Click(object sender, EventArgs e)

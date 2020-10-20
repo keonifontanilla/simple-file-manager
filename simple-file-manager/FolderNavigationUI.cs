@@ -58,7 +58,6 @@ namespace simple_file_manager
             openFolderUI.Show();
         }
 
-        // Fix when UI folder is opened and path is changed from move
         private void SetUp(string path)
         {
             openFolderUI = new OpenFolderUI(moveFilesUI, path);
