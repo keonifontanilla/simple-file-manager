@@ -223,5 +223,38 @@ namespace simple_file_manager
             sortByDateClicked = true;
             LoadDirectoryAndFiles(this.path);
         }
+
+        private void folderListView_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
+                contextMenuStrip.Items.Add("Open in explorer");
+
+                if (folderListView.FocusedItem.Bounds.Contains(e.Location))
+                {
+                    contextMenuStrip.Show(Cursor.Position);
+                    contextMenuStrip.ItemClicked += new ToolStripItemClickedEventHandler(contextMenu_ItemClicked);
+                }
+            }
+        }
+
+        private void contextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            var path = this.path;
+            path += "\\" + folderListView.FocusedItem.Text;
+
+            var fileAttributes = File.GetAttributes(path);
+            isFile = ((fileAttributes & FileAttributes.Directory) == FileAttributes.Directory) ? false : true;
+
+            if (isFile)
+            {
+                Process.Start(this.path);
+            }
+            else
+            {
+                Process.Start(path);
+            };
+        }
     }
 }

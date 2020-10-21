@@ -57,6 +57,7 @@
             this.folderListView.TabIndex = 0;
             this.folderListView.UseCompatibleStateImageBehavior = false;
             this.folderListView.SelectedIndexChanged += new System.EventHandler(this.folderListView_SelectedIndexChanged);
+            this.folderListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.folderListView_MouseClick);
             // 
             // iconsList
             // 
