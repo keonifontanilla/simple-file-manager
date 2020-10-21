@@ -20,11 +20,18 @@ namespace simple_file_manager
         TopBar topBar;
         OpenFolderUI openFolderUI;
         MoveFilesUI moveFilesUI;
+
         private String[] paths = new String[6];
+        private string rootDrive = "";
+        private string desktopPath = "";
+        private string downloadsPath = "";
 
         public FolderNavigationUI()
         {
             moveFilesUI = new MoveFilesUI();
+            rootDrive = Path.GetPathRoot(Environment.GetFolderPath(Environment.SpecialFolder.System));
+            desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            downloadsPath = Environment.ExpandEnvironmentVariables(@"%userprofile%\Downloads");
 
             InitializeComponent();
 
@@ -34,26 +41,19 @@ namespace simple_file_manager
         }
 
         private void mainFolderButton_Click(object sender, EventArgs e)
-        {
-            // Get path for correct hard drive e.g. C
-            var rootDrive = Path.GetPathRoot(Environment.GetFolderPath(Environment.SpecialFolder.System));
-            
+        {   
             SetUp(rootDrive);
             openFolderUI.Show();
         }
 
         private void desktopfolderButton_Click(object sender, EventArgs e)
         {
-            var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
             SetUp(desktopPath);
             openFolderUI.Show();
         }
 
         private void downloadsFolderButton_Click(object sender, EventArgs e)
         {
-            var downloadsPath = Environment.ExpandEnvironmentVariables(@"%userprofile%\downloads");
-
             SetUp(downloadsPath);
             openFolderUI.Show();
         }
@@ -96,7 +96,7 @@ namespace simple_file_manager
                 {
                     var duplicatePath = paths.Where(x => x != null).Any(x => x.Equals(folderBrowserDialog.SelectedPath));
 
-                    if (!duplicatePath)
+                    if (!duplicatePath && !folderBrowserDialog.SelectedPath.Equals(rootDrive) && !folderBrowserDialog.SelectedPath.Equals(desktopPath) && !folderBrowserDialog.SelectedPath.Equals(downloadsPath))
                     {
                         paths[index] = folderBrowserDialog.SelectedPath;
                         MoveFiles.mainUIUpdatedpaths[index] = folderBrowserDialog.SelectedPath;
