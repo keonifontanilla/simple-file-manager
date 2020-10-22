@@ -262,7 +262,6 @@ namespace simple_file_manager
 
         private void renameButton_Click(object sender, EventArgs e)
         {
-            // Fix renaming a folder on the main menu
             if (!MoveFiles.MoveClicked && folderListView.FocusedItem != null && folderListView.SelectedItems.Count != 0)
             {
                 var newName = Microsoft.VisualBasic.Interaction.InputBox("Input new name.", "Rename", folderListView.FocusedItem.Text, newFolderButton.Right, newFolderButton.Location.Y);
@@ -271,22 +270,8 @@ namespace simple_file_manager
                 var fileInfo = new FileInfo(oldPath);
                 var newPath = this.path + "\\" + newName + fileInfo.Extension;
 
-                // Fix this
-                for (int i = 0; i < MoveFiles.MainUIPaths.Length; i++)
-                {
-                    if (MoveFiles.MainUIPaths[i] != null && MoveFiles.MainUIPaths[i].Contains(oldPath))
-                    {
-                        if (MoveFiles.MainUIPaths[i] == oldPath)
-                        {
-                            MoveFiles.MainUIPaths[i] = MoveFiles.MainUIPaths[i].Replace(oldPath, newPath);
-                        }
-                        else
-                        {
-                            MoveFiles.MainUIPaths[i] = MoveFiles.MainUIPaths[i].Replace(oldPath + "\\", newPath);
-                        }
-                        
-                    }
-                }
+                // Should be fixed.
+                UpdateMainUIOPath(oldPath, newPath);
 
                 try
                 {
@@ -305,6 +290,25 @@ namespace simple_file_manager
                 }
 
                 LoadDirectoryAndFiles(this.path);
+            }
+        }
+
+        private void UpdateMainUIOPath(string oldPath, string newPath)
+        {
+            for (int i = 0; i < MoveFiles.MainUIPaths.Length; i++)
+            {
+                if (MoveFiles.MainUIPaths[i] != null && MoveFiles.MainUIPaths[i].Contains(oldPath))
+                {
+                    if (MoveFiles.MainUIPaths[i] == oldPath)
+                    {
+                        MoveFiles.MainUIPaths[i] = MoveFiles.MainUIPaths[i].Replace(oldPath, newPath);
+                    }
+                    else if (MoveFiles.MainUIPaths[i].Length > oldPath.Length && MoveFiles.MainUIPaths[i].Contains(oldPath + "\\"))
+                    {
+                        MoveFiles.MainUIPaths[i] = MoveFiles.MainUIPaths[i].Replace(oldPath, newPath);
+                    }
+
+                }
             }
         }
     }
