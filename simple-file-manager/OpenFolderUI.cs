@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -255,6 +258,46 @@ namespace simple_file_manager
             {
                 Process.Start(path);
             };
+        }
+
+        private void renameButton_Click(object sender, EventArgs e)
+        {
+            // Fix renaming a folder on the main menu
+            if (!MoveFiles.MoveClicked && folderListView.FocusedItem != null && folderListView.SelectedItems.Count != 0)
+            {
+                var newName = Microsoft.VisualBasic.Interaction.InputBox("Input new name.", "Rename", folderListView.FocusedItem.Text, newFolderButton.Right, newFolderButton.Location.Y);
+                var oldPath = this.path + "\\" + folderListView.FocusedItem.Text;
+
+                var fileInfo = new FileInfo(oldPath);
+                var newPath = this.path + "\\" + newName + fileInfo.Extension;
+
+                var isOnMainUI = MoveFiles.mainUIUpdatedpaths.Where(x => x != null).Any(x => x.Equals(oldPath));
+
+                if (!isOnMainUI)
+                {
+                    try
+                    {
+                        if (newName.Length > 0)
+                        {
+                            Directory.Move(oldPath, newPath);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Canceled.");
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Name already exists.");
+                    }
+
+                    LoadDirectoryAndFiles(this.path);
+                }
+                else
+                {
+                    MessageBox.Show("Folder is on the main menu. Remove or rename folder on the main menu.");
+                }
+            }
         }
     }
 }

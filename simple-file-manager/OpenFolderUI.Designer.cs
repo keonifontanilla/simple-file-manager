@@ -43,6 +43,7 @@
             this.sortByNameButton = new System.Windows.Forms.Button();
             this.moveButton = new System.Windows.Forms.Button();
             this.topBarPanel = new System.Windows.Forms.Panel();
+            this.renameButton = new System.Windows.Forms.Button();
             this.sideBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,6 +137,7 @@
             // sideBarPanel
             // 
             this.sideBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.sideBarPanel.Controls.Add(this.renameButton);
             this.sideBarPanel.Controls.Add(this.sortByDate);
             this.sideBarPanel.Controls.Add(this.sortByNameButton);
             this.sideBarPanel.Controls.Add(this.moveButton);
@@ -190,6 +192,16 @@
             this.topBarPanel.Size = new System.Drawing.Size(802, 65);
             this.topBarPanel.TabIndex = 30;
             // 
+            // renameButton
+            // 
+            this.renameButton.Location = new System.Drawing.Point(32, 277);
+            this.renameButton.Name = "renameButton";
+            this.renameButton.Size = new System.Drawing.Size(75, 23);
+            this.renameButton.TabIndex = 11;
+            this.renameButton.Text = "Rename";
+            this.renameButton.UseVisualStyleBackColor = true;
+            this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
+            // 
             // OpenFolderUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,5 +241,6 @@
         private System.Windows.Forms.Button sortByDate;
         private System.Windows.Forms.Button sortByNameButton;
         private System.Windows.Forms.Panel topBarPanel;
+        private System.Windows.Forms.Button renameButton;
     }
 }
