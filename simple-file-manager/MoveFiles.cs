@@ -15,7 +15,7 @@ namespace simple_file_manager
         public static bool MoveClicked { get; set; } = false;
         public static string  Name { get; set; }
         public static List<OpenFolderUI> OpenFolderUIRefs { get; set; } = new List<OpenFolderUI>();
-        public static string[] mainUIUpdatedpaths { get; set; } = new string[6];
+        public static string[] MainUIPaths { get; set; } = new string[6];
 
         public static void Reset()
         {

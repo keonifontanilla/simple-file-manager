@@ -271,32 +271,40 @@ namespace simple_file_manager
                 var fileInfo = new FileInfo(oldPath);
                 var newPath = this.path + "\\" + newName + fileInfo.Extension;
 
-                var isOnMainUI = MoveFiles.mainUIUpdatedpaths.Where(x => x != null).Any(x => x.Equals(oldPath));
-
-                if (!isOnMainUI)
+                // Fix this
+                for (int i = 0; i < MoveFiles.MainUIPaths.Length; i++)
                 {
-                    try
+                    if (MoveFiles.MainUIPaths[i] != null && MoveFiles.MainUIPaths[i].Contains(oldPath))
                     {
-                        if (newName.Length > 0)
+                        if (MoveFiles.MainUIPaths[i] == oldPath)
                         {
-                            Directory.Move(oldPath, newPath);
+                            MoveFiles.MainUIPaths[i] = MoveFiles.MainUIPaths[i].Replace(oldPath, newPath);
                         }
                         else
                         {
-                            MessageBox.Show("Canceled.");
+                            MoveFiles.MainUIPaths[i] = MoveFiles.MainUIPaths[i].Replace(oldPath + "\\", newPath);
                         }
+                        
                     }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Name already exists.");
-                    }
+                }
 
-                    LoadDirectoryAndFiles(this.path);
-                }
-                else
+                try
                 {
-                    MessageBox.Show("Folder is on the main menu. Remove or rename folder on the main menu.");
+                    if (newName.Length > 0)
+                    {
+                        Directory.Move(oldPath, newPath);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Canceled.");
+                    }
                 }
+                catch (Exception)
+                {
+                    MessageBox.Show("Name already exists.");
+                }
+
+                LoadDirectoryAndFiles(this.path);
             }
         }
     }

@@ -21,7 +21,6 @@ namespace simple_file_manager
         OpenFolderUI openFolderUI;
         MoveFilesUI moveFilesUI;
 
-        private String[] paths = new String[6];
         private string rootDrive = "";
         private string desktopPath = "";
         private string downloadsPath = "";
@@ -94,14 +93,13 @@ namespace simple_file_manager
             {
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
-                    var duplicatePath = paths.Where(x => x != null).Any(x => x.Equals(folderBrowserDialog.SelectedPath));
+                    var duplicatePath = MoveFiles.MainUIPaths.Where(x => x != null).Any(x => x.Equals(folderBrowserDialog.SelectedPath));
 
                     if (!duplicatePath && !folderBrowserDialog.SelectedPath.Equals(rootDrive) && !folderBrowserDialog.SelectedPath.Equals(desktopPath) && !folderBrowserDialog.SelectedPath.Equals(downloadsPath))
                     {
-                        paths[index] = folderBrowserDialog.SelectedPath;
-                        MoveFiles.mainUIUpdatedpaths[index] = folderBrowserDialog.SelectedPath;
+                        MoveFiles.MainUIPaths[index] = folderBrowserDialog.SelectedPath;
                         AddFolderIcon(folderButton, removeButton);
-                        lblName.Text = paths[index].Substring(paths[index].LastIndexOf("\\") + 1);
+                        lblName.Text = folderBrowserDialog.SelectedPath.Substring(folderBrowserDialog.SelectedPath.LastIndexOf("\\") + 1) ;
 
                         // formating label location in the middle of folder icon
                         lblName.Location = new Point(folderButton.Location.X + ((folderButton.Size.Width - lblName.Size.Width) / 2), folderButton.Bottom);
@@ -116,16 +114,9 @@ namespace simple_file_manager
 
         private void CreateUIFolder(Label lblName, Button folderButton, Button removeButton, int index)
         {
-            if (paths[index] != null)
+            if (MoveFiles.MainUIPaths[index] != null)
             {
-                if (paths[index] != MoveFiles.mainUIUpdatedpaths[index])
-                {
-                    SetUp(MoveFiles.mainUIUpdatedpaths[index]);
-                }
-                else
-                {
-                    SetUp(paths[index]);
-                }
+                SetUp(MoveFiles.MainUIPaths[index]);
                 openFolderUI.Show();
             }
             else
@@ -176,8 +167,7 @@ namespace simple_file_manager
             addButton.Image = Image.FromFile(@".\Icons\addIcon.png");
             folderLabel.Text = "";
             removeButton.Visible = false;
-            paths[index - 1] = null;
-            MoveFiles.mainUIUpdatedpaths[index - 1] = null;
+            MoveFiles.MainUIPaths[index - 1] = null;
         }
 
         private void FolderNavigationUI_FormClosing(object sender, FormClosingEventArgs e)

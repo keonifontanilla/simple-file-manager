@@ -35,8 +35,8 @@ namespace simple_file_manager
                 if ((fileAttributes & FileAttributes.Directory) == FileAttributes.Directory)
                 {
                     // Old path for folders on main UI
-                    var index = Array.FindIndex(MoveFiles.mainUIUpdatedpaths, x => x == MoveFiles.SourcePath);
-                    if (index != -1) MoveFiles.mainUIUpdatedpaths[index] = MoveFiles.DestinationPath + "\\" + sourceLabel.Text;
+                    var index = Array.FindIndex(MoveFiles.MainUIPaths, x => x == MoveFiles.SourcePath);
+                    if (index != -1) MoveFiles.MainUIPaths[index] = MoveFiles.DestinationPath + "\\" + sourceLabel.Text;
                     MoveFolders(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
 
                     SendToRecycleBin();
