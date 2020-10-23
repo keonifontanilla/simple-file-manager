@@ -270,13 +270,12 @@ namespace simple_file_manager
                 var fileInfo = new FileInfo(oldPath);
                 var newPath = this.path + "\\" + newName + fileInfo.Extension;
 
-                // Should be fixed.
-                UpdateMainUIOPath(oldPath, newPath);
-
                 try
                 {
                     if (newName.Length > 0)
                     {
+                        UpdateMainUIOPath(oldPath, newPath);
+
                         Directory.Move(oldPath, newPath);
                     }
                     else
@@ -293,6 +292,7 @@ namespace simple_file_manager
             }
         }
 
+        // Fix weird issue with renaming and moving.
         private void UpdateMainUIOPath(string oldPath, string newPath)
         {
             for (int i = 0; i < MoveFiles.MainUIPaths.Length; i++)
@@ -302,12 +302,13 @@ namespace simple_file_manager
                     if (MoveFiles.MainUIPaths[i] == oldPath)
                     {
                         MoveFiles.MainUIPaths[i] = MoveFiles.MainUIPaths[i].Replace(oldPath, newPath);
+                        MoveFiles.Name = newPath.Substring(newPath.LastIndexOf("\\") + 1);
+                        MoveFiles.MainUIRef.ChangeFolderLabels($"folderLabel{i + 1}", MoveFiles.Name);
                     }
                     else if (MoveFiles.MainUIPaths[i].Length > oldPath.Length && MoveFiles.MainUIPaths[i].Contains(oldPath + "\\"))
                     {
                         MoveFiles.MainUIPaths[i] = MoveFiles.MainUIPaths[i].Replace(oldPath, newPath);
                     }
-
                 }
             }
         }

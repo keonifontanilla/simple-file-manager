@@ -28,7 +28,7 @@ namespace simple_file_manager
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            if ((MoveFiles.SourcePath != null) && (MoveFiles.SourcePath != "") && (destPictureBox.Image != null) && (MoveFiles.SourcePath != MoveFiles.DestinationPath + "\\" + sourceLabel.Text))
+            if (!String.IsNullOrEmpty(MoveFiles.SourcePath) && (destPictureBox.Image != null) && (MoveFiles.SourcePath != MoveFiles.DestinationPath + "\\" + sourceLabel.Text) && (MoveFiles.SourcePath != MoveFiles.DestinationPath))
             {
                 var fileAttributes = File.GetAttributes(MoveFiles.SourcePath);
 

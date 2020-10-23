@@ -37,6 +37,7 @@ namespace simple_file_manager
             topBar = new TopBar(topBarPanel, "File Manager", 0);
             topBar.Dock = DockStyle.Top;
             topBarPanel.Controls.Add(topBar);
+            MoveFiles.MainUIRef = this;
         }
 
         private void mainFolderButton_Click(object sender, EventArgs e)
@@ -173,6 +174,11 @@ namespace simple_file_manager
         private void FolderNavigationUI_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        public void ChangeFolderLabels(string labelName, string name)
+        {
+            this.Controls[labelName].Text = name;
         }
     }
 }
