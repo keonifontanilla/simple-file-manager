@@ -264,7 +264,9 @@ namespace simple_file_manager
         {
             if (!MoveFiles.MoveClicked && folderListView.FocusedItem != null && folderListView.SelectedItems.Count != 0)
             {
-                var newName = Microsoft.VisualBasic.Interaction.InputBox("Input new name.", "Rename", folderListView.FocusedItem.Text, newFolderButton.Right, newFolderButton.Location.Y);
+                var indexOfFileExt = folderListView.FocusedItem.Text.IndexOf(".");
+                var newName = indexOfFileExt >= 0 ? Microsoft.VisualBasic.Interaction.InputBox("Input new name.", "Rename", folderListView.FocusedItem.Text.Substring(0, indexOfFileExt), newFolderButton.Right, newFolderButton.Location.Y)
+                                                  : Microsoft.VisualBasic.Interaction.InputBox("Input new name.", "Rename", folderListView.FocusedItem.Text, newFolderButton.Right, newFolderButton.Location.Y);
                 var oldPath = this.path + "\\" + folderListView.FocusedItem.Text;
 
                 var fileInfo = new FileInfo(oldPath);
@@ -292,7 +294,6 @@ namespace simple_file_manager
             }
         }
 
-        // Fix weird issue with renaming and moving.
         private void UpdateMainUIOPath(string oldPath, string newPath)
         {
             for (int i = 0; i < MoveFiles.MainUIPaths.Length; i++)
