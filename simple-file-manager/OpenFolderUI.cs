@@ -74,9 +74,12 @@ namespace simple_file_manager
 
         private void LoadDirectory(DirectoryInfo[] directories)
         {
+            var icon = DefaultIcons.FolderLarge;
+
             foreach (var directory in directories)
             {
-                folderListView.Items.Add(directory.Name);
+                iconsList.Images.Add(icon);
+                folderListView.Items.Add(directory.Name, iconsList.Images.Count - 1);
             }
         }
 
