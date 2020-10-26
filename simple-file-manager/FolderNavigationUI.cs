@@ -180,5 +180,32 @@ namespace simple_file_manager
         {
             this.Controls[labelName].Text = name;
         }
+
+        public void RemoveDuplicateUIFolder(string path)
+        {
+            var duplicatePaths = MoveFiles.MainUIPaths
+                .Select((t, i) => new { Index = i, Text = t })
+                .Where(x => x.Text == path)
+                .Select(x => x.Index).ToArray();
+
+            //var duplicatePaths = new List<int>();
+
+            //for (int i = 0; i < MoveFiles.MainUIPaths.Count(); i++)
+            //{
+            //    if (MoveFiles.MainUIPaths[i] == path) duplicatePaths.Add(i);
+            //}
+
+            for (int i = 1; i < duplicatePaths.Count(); i++)
+            {
+                var addButton = (Button)this.Controls[$"addFolderButton{duplicatePaths[i]+1}"];
+                var folderLabel = (Label)this.Controls[$"folderLabel{duplicatePaths[i]+1}"];
+                var removeButton = (Button)this.Controls[$"removeButton{duplicatePaths[i]+1}"];
+
+                addButton.Image = Image.FromFile(@".\Icons\addIcon.png");
+                folderLabel.Text = "";
+                removeButton.Visible = false;
+                MoveFiles.MainUIPaths[duplicatePaths[i]] = null;
+            }
+        }
     }
 }

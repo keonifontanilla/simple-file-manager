@@ -39,6 +39,9 @@ namespace simple_file_manager
                     if (index != -1) MoveFiles.MainUIPaths[index] = MoveFiles.DestinationPath + "\\" + sourceLabel.Text;
                     MoveFolders(MoveFiles.SourcePath, MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
 
+                    // Remove duplicate folders from main ui if a folder is copied into a folder with the same name
+                    MoveFiles.MainUIRef.RemoveDuplicateUIFolder(MoveFiles.DestinationPath + "\\" + sourceLabel.Text);
+                    
                     SendToRecycleBin();
                     RefreshListView();
                     Reset();
