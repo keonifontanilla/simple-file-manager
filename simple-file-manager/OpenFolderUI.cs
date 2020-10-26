@@ -282,6 +282,11 @@ namespace simple_file_manager
                         UpdateMainUIOPath(oldPath, newPath);
 
                         Directory.Move(oldPath, newPath);
+
+                        foreach (var refs in MoveFiles.OpenFolderUIRefs)
+                        {
+                            refs.RefreshListView(newPath);
+                        }
                     }
                     else
                     {
