@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace simple_file_manager
 {
@@ -187,13 +180,6 @@ namespace simple_file_manager
                 .Select((t, i) => new { Index = i, Text = t })
                 .Where(x => x.Text == path)
                 .Select(x => x.Index).ToArray();
-
-            //var duplicatePaths = new List<int>();
-
-            //for (int i = 0; i < MoveFiles.MainUIPaths.Count(); i++)
-            //{
-            //    if (MoveFiles.MainUIPaths[i] == path) duplicatePaths.Add(i);
-            //}
 
             for (int i = 1; i < duplicatePaths.Count(); i++)
             {
