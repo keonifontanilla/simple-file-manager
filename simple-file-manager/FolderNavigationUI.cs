@@ -31,6 +31,44 @@ namespace simple_file_manager
             topBar.Dock = DockStyle.Top;
             topBarPanel.Controls.Add(topBar);
             MoveFiles.MainUIRef = this;
+
+            InitSettings();
+        }
+
+        public void InitSettings()
+        {
+            var savePaths = Properties.Settings.Default.MainUIPaths;
+
+            if (savePaths != null)
+            {
+                savePaths.CopyTo(MoveFiles.MainUIPaths, 0);
+            }
+            
+            for (int i = 0; i < MoveFiles.MainUIPaths.Count();  i++)
+            {
+                if (MoveFiles.MainUIPaths[i] != null)
+                {
+                    var folderButton = (Button)this.Controls[$"addFolderButton{i + 1}"];
+                    var removeButton = (Button)this.Controls[$"removeButton{i + 1}"];
+                    var folderLabel = (Label)this.Controls[$"folderLabel{i + 1}"];
+
+                    AddFolderIcon(folderButton, removeButton);
+                    FormatFolderLabel(folderLabel, folderButton, MoveFiles.MainUIPaths[i]);
+                }
+            }
+            
+        }
+
+        private void SaveSettings()
+        {
+            Properties.Settings.Default.MainUIPaths = new System.Collections.Specialized.StringCollection();
+
+            foreach (var path in MoveFiles.MainUIPaths)
+            {
+                Properties.Settings.Default.MainUIPaths.Add(path);
+            }
+
+            Properties.Settings.Default.Save();
         }
 
         private void mainFolderButton_Click(object sender, EventArgs e)
@@ -81,6 +119,14 @@ namespace simple_file_manager
             }
         }
 
+        private void FormatFolderLabel(Label lblName, Button folderButton, string path)
+        {
+            lblName.Text = path.Substring(path.LastIndexOf("\\") + 1);
+
+            // formating label location in the middle of folder icon
+            lblName.Location = new Point(folderButton.Location.X + ((folderButton.Size.Width - lblName.Size.Width) / 2), folderButton.Bottom);
+        }
+
         private void AddNewFolder(Label lblName, Button folderButton, Button removeButton, int index)
         {
             using (var folderBrowserDialog = new FolderBrowserDialog())
@@ -93,10 +139,7 @@ namespace simple_file_manager
                     {
                         MoveFiles.MainUIPaths[index] = folderBrowserDialog.SelectedPath;
                         AddFolderIcon(folderButton, removeButton);
-                        lblName.Text = folderBrowserDialog.SelectedPath.Substring(folderBrowserDialog.SelectedPath.LastIndexOf("\\") + 1) ;
-
-                        // formating label location in the middle of folder icon
-                        lblName.Location = new Point(folderButton.Location.X + ((folderButton.Size.Width - lblName.Size.Width) / 2), folderButton.Bottom);
+                        FormatFolderLabel(lblName, folderButton, folderBrowserDialog.SelectedPath);
                     }
                     else
                     {
@@ -166,6 +209,7 @@ namespace simple_file_manager
 
         private void FolderNavigationUI_FormClosing(object sender, FormClosingEventArgs e)
         {
+            SaveSettings();
             Application.Exit();
         }
 
