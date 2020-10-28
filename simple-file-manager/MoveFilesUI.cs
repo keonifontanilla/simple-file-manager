@@ -5,6 +5,9 @@ using System.Windows.Forms;
 
 namespace simple_file_manager
 {
+    /// <summary>
+    /// This class is the user interface for moving folders and files.
+    /// </summary>
     public partial class MoveFilesUI : Form
     {
         TopBar topBar;
@@ -18,6 +21,12 @@ namespace simple_file_manager
             topBarPanel.Controls.Add(topBar);
         }
 
+        /// <summary>
+        /// Checks source and destination path and moves folders or files. Also updates the path if the folder is on the main ui and removes
+        /// any folder duplication that may happen with the move.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void confirmButton_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(MoveFiles.SourcePath) && (destPictureBox.Image != null) && (MoveFiles.SourcePath != MoveFiles.DestinationPath + "\\" + sourceLabel.Text) && (MoveFiles.SourcePath != MoveFiles.DestinationPath))
@@ -45,6 +54,17 @@ namespace simple_file_manager
             }
         }
 
+        /// <summary>
+        /// Moves a folder to another folder. If the destination folder doesn't exist then it creates the folder. If the 
+        /// destination folder does exist then it moves the files to the destination folder and recursively moves the sub
+        /// folders to the destination folder.
+        /// </summary>
+        /// <param name="sourcePath">
+        /// The source path.
+        /// </param>
+        /// <param name="destinationPath">
+        /// The destination path.
+        /// </param>
         private void MoveFolders(string sourcePath, string destinationPath)
         {
             try
@@ -94,6 +114,9 @@ namespace simple_file_manager
             }
         }
 
+        /// <summary>
+        /// Sends original folder or file to the recycle bin after it is moved.
+        /// </summary>
         private void SendToRecycleBin()
         {
             if (Directory.Exists(MoveFiles.SourcePath))
@@ -112,6 +135,9 @@ namespace simple_file_manager
             }
         }
 
+        /// <summary>
+        /// Refreshes listView of the open directory after the folder or file has been moved.
+        /// </summary>
         private void RefreshListView()
         {
             foreach (var refs in MoveFiles.OpenFolderUIRefs)
@@ -136,6 +162,11 @@ namespace simple_file_manager
             this.Hide();
         }
 
+        /// <summary>
+        /// Sets the source path.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void setButton1_Click(object sender, EventArgs e)
         {
             if (MoveFiles.IsSource)
@@ -144,6 +175,11 @@ namespace simple_file_manager
             }
         }
 
+        /// <summary>
+        /// Sets the destination path.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void setButton2_Click(object sender, EventArgs e)
         {
             if (MoveFiles.DestinationPath != "" && MoveFiles.DestinationPath != null)
@@ -153,9 +189,24 @@ namespace simple_file_manager
             }
         }
 
+        /// <summary>
+        /// Sets the icon of the folder or file that is being moved.
+        /// </summary>
+        /// <param name="path">
+        /// The source or destination path.
+        /// </param>
+        /// <param name="pictureBox">
+        /// The pictureBox to set the folder icon to.
+        /// </param>
+        /// <param name="label">
+        /// The name of the folder or file being moved.
+        /// </param>
+        /// <param name="isSource">
+        /// Checks to see if source or destination is set.
+        /// </param>
         private void SetButtonUI(string path, PictureBox pictureBox, Label label, bool isSource)
         {
-            if (path != null && path != "")
+            if (!string.IsNullOrEmpty(path))
             {
                 pictureBox.Image = Image.FromFile(@".\Icons\folderIcon.png");
                 label.Text = MoveFiles.Name;
@@ -165,6 +216,14 @@ namespace simple_file_manager
             }
         }
 
+        /// <summary>
+        /// Positions folder label in the center of the folder icon.
+        /// </summary>
+        /// <param name="pictureBox"></param>
+        /// <param name="label"></param>
+        /// <returns>
+        /// Returns a point of the location of the label.
+        /// </returns>
         private Point PostionLabel(PictureBox pictureBox, Label label)
         {
             return new Point(pictureBox.Location.X + ((pictureBox.Size.Width - label.Size.Width) / 2), pictureBox.Bottom);

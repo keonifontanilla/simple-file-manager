@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace simple_file_manager
 {
+    /// <summary>
+    /// This class displays the main interface. Folders can be added to the ui for the user to access easily. Folders
+    /// can also be removed from the ui. When the program is closed, the user selected folders will be saved.
+    /// </summary>
     public partial class FolderNavigationUI : Form
     {
         TopBar topBar;
@@ -35,7 +39,10 @@ namespace simple_file_manager
             InitSettings();
         }
 
-        public void InitSettings()
+        /// <summary>
+        /// Initializes saved folders on the main ui.
+        /// </summary>
+        private void InitSettings()
         {
             var savePaths = Properties.Settings.Default.MainUIPaths;
 
@@ -59,6 +66,9 @@ namespace simple_file_manager
             
         }
 
+        /// <summary>
+        /// Saves the main ui folders.
+        /// </summary>
         private void SaveSettings()
         {
             Properties.Settings.Default.MainUIPaths = new System.Collections.Specialized.StringCollection();
@@ -89,6 +99,13 @@ namespace simple_file_manager
             openFolderUI.Show();
         }
 
+        /// <summary>
+        /// Creates openFolderUI instance when a folder is clicked. 
+        /// Sets paths if moving folders or files.
+        /// </summary>
+        /// <param name="path">
+        /// The path of the folder.
+        /// </param>
         private void SetUp(string path)
         {
             openFolderUI = new OpenFolderUI(moveFilesUI, path);
@@ -213,11 +230,26 @@ namespace simple_file_manager
             Application.Exit();
         }
 
+        /// <summary>
+        /// Changes folder label when a folder is renamed.
+        /// </summary>
+        /// <param name="labelName">
+        /// The name of the folder.
+        /// </param>
+        /// <param name="name">
+        /// The new name of the label.
+        /// </param>
         public void ChangeFolderLabels(string labelName, string name)
         {
             this.Controls[labelName].Text = name;
         }
 
+        /// <summary>
+        /// Removes duplicate main ui folders when a folder is copied into a folder of the same name.
+        /// </summary>
+        /// <param name="path">
+        /// The folder path used to check for duplicates.
+        /// </param>
         public void RemoveDuplicateUIFolder(string path)
         {
             var duplicatePaths = MoveFiles.MainUIPaths

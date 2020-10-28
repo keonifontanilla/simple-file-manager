@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace simple_file_manager
 {
+    /// <summary>
+    /// This class displays a folder's files and sub folders. It also handles the creation of new folders,
+    /// as well as opening, moving, renaming, and sorting folders and files.
+    /// </summary>
     public partial class OpenFolderUI : Form
     {
         MoveFilesUI moveFilesUI;
@@ -28,6 +32,12 @@ namespace simple_file_manager
             LoadDirectoryAndFiles(rootPath);
         }
 
+        /// <summary>
+        /// Loads folders and files into listView. Also handles if folder is sorted by name or date.
+        /// </summary>
+        /// <param name="path">
+        /// The path of folder.
+        /// </param>
         public void LoadDirectoryAndFiles(string path)
         {
             DirectoryInfo[] directories;
@@ -53,6 +63,9 @@ namespace simple_file_manager
             FormatTopBar();
         }
 
+        /// <summary>
+        /// Positions topBar user control.
+        /// </summary>
         private void FormatTopBar()
         {
             var index = topBarPanel.Controls.IndexOf(topBar);
@@ -173,6 +186,11 @@ namespace simple_file_manager
             moveFilesUI.Show();
         }
 
+        /// <summary>
+        /// Gets the source and destination path of folder or file if move is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void folderListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             var path = this.path;
@@ -192,6 +210,10 @@ namespace simple_file_manager
             }
         }
 
+        /// <summary>
+        /// Refreshes listView after a change has been made to the open folder.
+        /// </summary>
+        /// <param name="path"></param>
         public void RefreshListView(string path)
         {
             // Check for when the folder on the main ui is moved while open
@@ -223,6 +245,11 @@ namespace simple_file_manager
             LoadDirectoryAndFiles(this.path);
         }
 
+        /// <summary>
+        /// Opens a context menu when a folder or file is right clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void folderListView_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -238,6 +265,11 @@ namespace simple_file_manager
             }
         }
 
+        /// <summary>
+        /// Opens file explorer on the selected item in listView.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void contextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             var path = this.path;
@@ -295,6 +327,15 @@ namespace simple_file_manager
             }
         }
 
+        /// <summary>
+        /// Updates the paths of the folders on the main ui if it has been renamed.
+        /// </summary>
+        /// <param name="oldPath">
+        /// The path of the folder before it has been moved.
+        /// </param>
+        /// <param name="newPath">
+        /// The path of the folder after it has been moved.
+        /// </param>
         private void UpdateMainUIOPath(string oldPath, string newPath)
         {
             for (int i = 0; i < MoveFiles.MainUIPaths.Length; i++)
