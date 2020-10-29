@@ -39,11 +39,11 @@
             this.openButton = new System.Windows.Forms.Button();
             this.newFolderButton = new System.Windows.Forms.Button();
             this.sideBarPanel = new System.Windows.Forms.Panel();
+            this.renameButton = new System.Windows.Forms.Button();
             this.sortByDate = new System.Windows.Forms.Button();
             this.sortByNameButton = new System.Windows.Forms.Button();
             this.moveButton = new System.Windows.Forms.Button();
             this.topBarPanel = new System.Windows.Forms.Panel();
-            this.renameButton = new System.Windows.Forms.Button();
             this.sideBarPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +68,7 @@
             // 
             // homeButton
             // 
-            this.homeButton.Location = new System.Drawing.Point(32, 59);
+            this.homeButton.Location = new System.Drawing.Point(32, 77);
             this.homeButton.Name = "homeButton";
             this.homeButton.Size = new System.Drawing.Size(75, 23);
             this.homeButton.TabIndex = 1;
@@ -78,7 +78,7 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(32, 103);
+            this.backButton.Location = new System.Drawing.Point(32, 121);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 2;
@@ -116,7 +116,7 @@
             // 
             // openButton
             // 
-            this.openButton.Location = new System.Drawing.Point(32, 147);
+            this.openButton.Location = new System.Drawing.Point(32, 165);
             this.openButton.Name = "openButton";
             this.openButton.Size = new System.Drawing.Size(75, 23);
             this.openButton.TabIndex = 6;
@@ -126,7 +126,7 @@
             // 
             // newFolderButton
             // 
-            this.newFolderButton.Location = new System.Drawing.Point(32, 191);
+            this.newFolderButton.Location = new System.Drawing.Point(32, 209);
             this.newFolderButton.Name = "newFolderButton";
             this.newFolderButton.Size = new System.Drawing.Size(75, 23);
             this.newFolderButton.TabIndex = 7;
@@ -150,6 +150,16 @@
             this.sideBarPanel.Name = "sideBarPanel";
             this.sideBarPanel.Size = new System.Drawing.Size(136, 555);
             this.sideBarPanel.TabIndex = 8;
+            // 
+            // renameButton
+            // 
+            this.renameButton.Location = new System.Drawing.Point(32, 295);
+            this.renameButton.Name = "renameButton";
+            this.renameButton.Size = new System.Drawing.Size(75, 23);
+            this.renameButton.TabIndex = 11;
+            this.renameButton.Text = "Rename";
+            this.renameButton.UseVisualStyleBackColor = true;
+            this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
             // 
             // sortByDate
             // 
@@ -175,7 +185,7 @@
             // 
             // moveButton
             // 
-            this.moveButton.Location = new System.Drawing.Point(32, 234);
+            this.moveButton.Location = new System.Drawing.Point(32, 252);
             this.moveButton.Name = "moveButton";
             this.moveButton.Size = new System.Drawing.Size(75, 23);
             this.moveButton.TabIndex = 8;
@@ -191,16 +201,6 @@
             this.topBarPanel.Name = "topBarPanel";
             this.topBarPanel.Size = new System.Drawing.Size(802, 65);
             this.topBarPanel.TabIndex = 30;
-            // 
-            // renameButton
-            // 
-            this.renameButton.Location = new System.Drawing.Point(32, 277);
-            this.renameButton.Name = "renameButton";
-            this.renameButton.Size = new System.Drawing.Size(75, 23);
-            this.renameButton.TabIndex = 11;
-            this.renameButton.Text = "Rename";
-            this.renameButton.UseVisualStyleBackColor = true;
-            this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
             // 
             // OpenFolderUI
             // 

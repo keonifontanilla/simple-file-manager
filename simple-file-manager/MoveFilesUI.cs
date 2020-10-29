@@ -208,7 +208,10 @@ namespace simple_file_manager
         {
             if (!string.IsNullOrEmpty(path))
             {
-                pictureBox.Image = Image.FromFile(@".\Icons\folderIcon.png");
+                var isFolder = (File.GetAttributes(path) & FileAttributes.Directory) == FileAttributes.Directory;
+                var image = isFolder ? DefaultIcons.FolderLarge.ToBitmap() : Icon.ExtractAssociatedIcon(path).ToBitmap();
+
+                pictureBox.Image = new Bitmap(image, new Size(96, 96));
                 label.Text = MoveFiles.Name;
                 label.Location = PostionLabel(pictureBox, label);
                 MoveFiles.IsSource = isSource;
