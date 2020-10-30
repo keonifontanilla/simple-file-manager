@@ -292,9 +292,7 @@ namespace simple_file_manager
         {
             if (!MoveFiles.MoveClicked && folderListView.FocusedItem != null && folderListView.SelectedItems.Count != 0)
             {
-                var indexOfFileExt = folderListView.FocusedItem.Text.IndexOf(".");
-                var newName = indexOfFileExt >= 0 ? Microsoft.VisualBasic.Interaction.InputBox("Input new name.", "Rename", folderListView.FocusedItem.Text.Substring(0, indexOfFileExt), newFolderButton.Right, newFolderButton.Location.Y)
-                                                  : Microsoft.VisualBasic.Interaction.InputBox("Input new name.", "Rename", folderListView.FocusedItem.Text, newFolderButton.Right, newFolderButton.Location.Y);
+                var newName = InputNewName();
                 var oldPath = this.path + "\\" + folderListView.FocusedItem.Text;
 
                 var fileInfo = new FileInfo(oldPath);
@@ -304,14 +302,7 @@ namespace simple_file_manager
                 {
                     if (newName.Length > 0)
                     {
-                        UpdateMainUIOPath(oldPath, newPath);
-
-                        Directory.Move(oldPath, newPath);
-
-                        foreach (var refs in MoveFiles.OpenFolderUIRefs)
-                        {
-                            refs.RefreshListView(newPath);
-                        }
+                        RenameFolder(oldPath, newPath);
                     }
                     else
                     {
@@ -325,6 +316,14 @@ namespace simple_file_manager
 
                 LoadDirectoryAndFiles(this.path);
             }
+        }
+
+        private string InputNewName()
+        {
+            var indexOfFileExt = folderListView.FocusedItem.Text.IndexOf(".");
+            var newName = indexOfFileExt >= 0 ? Microsoft.VisualBasic.Interaction.InputBox("Input new name.", "Rename", folderListView.FocusedItem.Text.Substring(0, indexOfFileExt), newFolderButton.Right, newFolderButton.Location.Y)
+                                              : Microsoft.VisualBasic.Interaction.InputBox("Input new name.", "Rename", folderListView.FocusedItem.Text, newFolderButton.Right, newFolderButton.Location.Y);
+            return newName;
         }
 
         /// <summary>
@@ -353,6 +352,19 @@ namespace simple_file_manager
                         MoveFiles.MainUIPaths[i] = MoveFiles.MainUIPaths[i].Replace(oldPath, newPath);
                     }
                 }
+            }
+        }
+
+        private void RenameFolder(string oldPath, string newPath)
+        {
+            UpdateMainUIOPath(oldPath, newPath);
+
+            Directory.Move(oldPath, newPath);
+
+            // Update paths for open folders
+            foreach (var refs in MoveFiles.OpenFolderUIRefs)
+            {
+                refs.RefreshListView(newPath);
             }
         }
     }

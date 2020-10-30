@@ -52,6 +52,10 @@ namespace simple_file_manager
                     MoveFile();
                 }
             }
+            else if ((MoveFiles.SourcePath == MoveFiles.DestinationPath + "\\" + sourceLabel.Text) || (MoveFiles.SourcePath == MoveFiles.DestinationPath))
+            {
+                MessageBox.Show("Paths are the same.");
+            }
         }
 
         /// <summary>
