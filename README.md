@@ -13,4 +13,4 @@ A simple file manager to browse your folders and files.
 * Move a folder or file.
 * Rename a folder or file.
 * Search for folders or files.
-* Sort items in a folder.
+* Sort folder by name or date.
